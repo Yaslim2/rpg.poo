@@ -12,7 +12,7 @@ public class Main {
 		UX ux = new UX();
         
         while(!(ux.getPararPrograma())){
-        System.out.println("\n\n***MENU***\n\n1 - Criar personagem\n2 - Exibir todos os personagens carregados\n3 - Salvar todos os personagens\n4 - Carregar personagem\n5 - Lista de personagens salvos\n0 - Encerrar programa\n");
+        System.out.println("\n\n***MENU***\n\n1 - Criar personagem\n2 - Exibir todos os personagens carregados\n3 - Salvar todos os personagens\n4 - Carregar personagem\n5 - Lista de personagens salvos\n6 - Deletar personagem\n0 - Encerrar programa\n");
 
         int op = sc.nextInt();
         switch(op){
@@ -34,7 +34,11 @@ public class Main {
             case 5:
                 ux.listarPersonagensSalvos();
                 break;
-
+            
+            case 6:
+            	ux.deletarPersonagens();
+            	break;
+            	
             case 0:
                 ux.encerrarPrograma();
                 sc.close();

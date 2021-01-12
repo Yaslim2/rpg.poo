@@ -55,7 +55,7 @@ public class Carregar {
 	public void listarPersonagens(){
     	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
-    	if(lista.exists()) {
+    	if(lista.exists() && lista.length() > 0) {
     		try{
     			Scanner s = new Scanner(lista);
                 System.out.println("\n***Lista de personagens***\n\n");
@@ -78,14 +78,14 @@ public class Carregar {
     		System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
     	}
-        }
+       }
     
     @SuppressWarnings("resource")
 	public Personagem selecaoPersonagem(){
     	//Substituir endereço aqui
     	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
-    	if(lista.exists()) {
+    	if(lista.exists() && lista.length() > 0) {
     		try {
         		Scanner ler = new Scanner(System.in);
         		Personagem p = null;
@@ -134,7 +134,7 @@ public class Carregar {
     	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	int cond = 0;
-    	if(lista.exists()) {
+    	if(lista.exists() && lista.length() > 0) {
     		try {
         		List <String> nomesPersonagens = new ArrayList<>();
         		String aux;
@@ -160,4 +160,34 @@ public class Carregar {
     	}
 		return cond;
     }
-}
+    
+    @SuppressWarnings("resource")
+	public List<String> personagensSalvos(){
+    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+    	File lista = new File(listaPersonagens);
+    	if(lista.exists() && lista.length() > 0) {
+    		try {
+        		List <String> nomesPersonagens = new ArrayList<>();
+        		String aux;
+    			Scanner s = new Scanner(lista);
+    			while(s.hasNextLine()) {
+    				aux = s.nextLine();
+    				nomesPersonagens.add(aux);
+    			}
+    			return nomesPersonagens;
+        	}
+        	catch(Exception e) {
+        		System.out.println("\nErro ao carregar personagem!\n");
+                System.out.println("Pressione ENTER para continuar...");
+                new java.util.Scanner(System.in).nextLine();
+        	}
+    	} else {
+    		System.out.println("\nSem personagens salvos!\n");
+    		System.out.println("Pressione ENTER para continuar...");
+            new java.util.Scanner(System.in).nextLine();
+            return null;
+    	}
+		return null;
+    }
+    }
+

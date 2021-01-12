@@ -1,6 +1,7 @@
 package rpg.utility;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +17,7 @@ public class UX {
     private Carregar load = new Carregar();
     private Scanner s = new Scanner(System.in);
     private Boolean pararPrograma = false;
-    
+    private Apagar delete = new Apagar();
 	
 	public UX() {}
 
@@ -36,18 +37,22 @@ public class UX {
 		return pararPrograma;
 	}
 
+	@SuppressWarnings("resource")
 	public void criarPersonagem() {
 		String nome;
     	int condition;
+    	int condition2;
         System.out.println("\nQual personagem você deseja criar:\n\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino\n");
-        int operation = s.nextInt();
-        switch(operation) {
+        try {
+        	int operation = s.nextInt();
+        	switch(operation) {
         	case 1:
         		System.out.println("Nome do Personagem: ");
         		s.nextLine();
         		nome = s.nextLine();
         		condition = load.nomeJaCriado(nome);
-        		if(condition == 1) {
+        		condition2 = checaLista(nome);
+        		if(condition == 1 || condition2 == 1) {
         			System.out.println("Nome já utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
             		new java.util.Scanner(System.in).nextLine();
@@ -67,6 +72,7 @@ public class UX {
         		if(condition == 1) {
         			System.out.println("\n\nNome já utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
+            		new java.util.Scanner(System.in).nextLine();
             		break;
         		} else {
         			personagens.add(new Tanque(nome));
@@ -83,6 +89,7 @@ public class UX {
         		if(condition == 1) {
         			System.out.println("Nome já utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
+            		new java.util.Scanner(System.in).nextLine();
             		break;
         		} else {
         			personagens.add(new Lutador(nome));
@@ -99,6 +106,7 @@ public class UX {
         		if(condition == 1) {
         			System.out.println("Nome já utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
+            		new java.util.Scanner(System.in).nextLine();
             		break;
         		} else {
         			personagens.add(new Assassino(nome));
@@ -113,7 +121,20 @@ public class UX {
                 new java.util.Scanner(System.in).nextLine();
                 break;
         }
-	}
+      }  catch(InputMismatchException e) {
+    	  System.out.println("\nErro ao criar personagem!! Digite um caractere válido.\n");
+    	  System.out.println("Pressione ENTER para continuar...");
+    	  new java.util.Scanner(System.in).nextLine();
+    	  s.nextLine();
+      }
+        catch(RuntimeException e) {
+        	System.out.println("\nErro inesperado!\n");
+      	  System.out.println("Pressione ENTER para continuar...");
+      	  new java.util.Scanner(System.in).nextLine();
+      	  s.nextLine();
+        }
+        }
+        
 	
 	@SuppressWarnings("resource")
 	public void exibirPersonagens() {
@@ -178,5 +199,29 @@ public class UX {
 		System.out.println("Pressione ENTER para continuar...");
         new java.util.Scanner(System.in).nextLine();
 		s.close();
+	}
+	
+	public void deletarPersonagens() {
+		int aux = 0;
+		String pers = delete.pegarNome();
+		delete.apagarArquivo(pers);
+		if(pers != null) {
+			for(int i = 0; i<personagens.size(); i++) {
+				if(personagens.get(i).getNomeChar().equals(pers)) {
+					aux = i;
+				}
+			}
+			personagens.remove(aux);
+		}
+	}
+	
+	public int checaLista(String nome) {
+		int cond=0;
+		for(int i = 0; i<personagens.size(); i++) {
+			if(personagens.get(i).getNomeChar().equals(nome)) {
+				cond = 1;
+			}
+		}
+		return cond;
 	}
 }

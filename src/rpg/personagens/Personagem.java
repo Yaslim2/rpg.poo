@@ -2,7 +2,7 @@ package rpg.personagens;
 
 import rpg.ataquesespeciais.Ataques;
 
-public abstract class Personagem {
+public abstract class Personagem implements Interface{
 	
 	protected String nomeChar;
 	protected int pontosDeVida;
@@ -19,83 +19,55 @@ public abstract class Personagem {
 		this.nomeChar = nomeChar;
 	}
 	
+        @Override
 	public TiposDePersonagem getTipo() {
 		return tipo;
 	}
-
+        @Override
 	public void setTipo(TiposDePersonagem tipo) {
 		this.tipo = tipo;
 	}
-	
+        @Override    
 	public int getPontosDeVida() {
 		return pontosDeVida;
 	}
-
+        @Override
 	public int getPoderDeHabilidade() {
 		return poderDeHabilidade;
 	}
-
-
+        @Override
 	public int getPoderAtaqueFisico() {
 		return poderAtaqueFisico;
 	}
-
+        @Override
 	public String getNomeChar() {
 		return nomeChar;
 	}
-
+        @Override
 	public void setNomeChar(String nomeChar) {
 		this.nomeChar = nomeChar;
 	}
-	
+        @Override    
 	public Ataques getAtaqueEspecial() {
 		return ataqueEspecial;
 	}
-
+        @Override
 	public Ataques getAtaqueBasico() {
 		return ataqueBasico;
 	}
-
+        @Override
 	public int getArmadura() {
 		return armadura;
 	}
-
+        @Override
 	public int getResistenciaMagica() {
 		return resistenciaMagica;
 	}
-	
-	public void setPontosDeVida(int pontosDeVida) {
-		this.pontosDeVida = pontosDeVida;
-	}
-
-	public void setPoderDeHabilidade(int poderDeHabilidade) {
-		this.poderDeHabilidade = poderDeHabilidade;
-	}
-
-	public void setPoderAtaqueFisico(int poderAtaqueFisico) {
-		this.poderAtaqueFisico = poderAtaqueFisico;
-	}
-
-	public void setAtaqueEspecial(Ataques ataqueEspecial) {
-		this.ataqueEspecial = ataqueEspecial;
-	}
-
-	public void setAtaqueBasico(Ataques ataqueBasico) {
-		this.ataqueBasico = ataqueBasico;
-	}
-
-	public void setArmadura(int armadura) {
-		this.armadura = armadura;
-	}
-
-	public void setResistenciaMagica(int resistenciaMagica) {
-		this.resistenciaMagica = resistenciaMagica;
-	}
-	
+        @Override
 	public void powerUp() {}
-	
+        @Override
 	public void mostrarDados() {}
-	
+	@Override
 	public void ataqueEspecial() {}
 	
 
