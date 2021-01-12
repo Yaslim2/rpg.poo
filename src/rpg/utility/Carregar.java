@@ -16,8 +16,8 @@ public class Carregar {
 	@SuppressWarnings("resource")
 	public Personagem load(String nomeArquivo){
         
-        //Substituir endereÃ§o aqui
-        String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\" + nomeArquivo + ".txt";
+		//Substituir endereço aqui
+        String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + nomeArquivo + ".txt";
 
         try{
             File arq = new File(arquivo);
@@ -55,8 +55,8 @@ public class Carregar {
 	public void listarPersonagens(){
         try{
 
-            //Substituir endereÃ§o aqui
-            String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\" + "Lista de Personagens.txt";
+        	//Substituir endereço aqui
+            String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
 
             File lista = new File(listaPersonagens);
 			Scanner s = new Scanner(lista);
@@ -80,7 +80,8 @@ public class Carregar {
     
     @SuppressWarnings("resource")
 	public Personagem selecaoPersonagem(){
-    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\" + "Lista de Personagens.txt";
+    	//Substituir endereço aqui
+    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
     	try {
     		Scanner ler = new Scanner(System.in);
     		Personagem p = null;
@@ -109,8 +110,8 @@ public class Carregar {
 		return null;
     }
     
-    public int nomeRepetido(List <Personagem> personagem, Personagem k) {
-    	int cond = 0;
+    public Integer nomeRepetido(List <Personagem> personagem, Personagem k) {
+    	Integer cond = 0;
     	for (Personagem p: personagem) {
     		if(p.getNomeChar().equals(k.getNomeChar())) {
     			cond = 1;
@@ -121,31 +122,36 @@ public class Carregar {
     
     @SuppressWarnings("resource")
 	public Integer nomeJaCriado(String name) {
-    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\" + "Lista de Personagens.txt";
-    	try {
-    		int cond = 0;
-    		List <String> nomesPersonagens = new ArrayList<>();
-    		String aux;
-    		File lista = new File(listaPersonagens);
-    		Scanner s = new Scanner(lista);
-    		while(s.hasNextLine()) {
-				aux = s.nextLine();
-				nomesPersonagens.add(aux);
-    		}
-    		for(String p : nomesPersonagens) {
-    			if(p.equals(name)) {
-    				cond = 1;
-    			} else {
-    				cond = 0;
-    			}
-    		}
+    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+    	File lista = new File(listaPersonagens);
+    	int cond = 0;
+    	if(lista.exists()) {
+    		try {
+        		List <String> nomesPersonagens = new ArrayList<>();
+        		String aux;
+        		Scanner s = new Scanner(lista);
+        		while(s.hasNextLine()) {
+        			aux = s.nextLine();
+        			nomesPersonagens.add(aux);
+            	}
+            	for(String p : nomesPersonagens) {
+            		if(p.equals(name)) {
+            			cond = 1;
+            		} else {
+            			cond = 0;
+            			}
+            	}
+        		return cond;
+        	}
+        	catch(Exception e) {
+        		System.out.println("Erro ao ler lista de personagens!\n");
+                System.out.println("Pressione ENTER para continuar...");
+                new java.util.Scanner(System.in).nextLine();
+        	}
+    	} else {
+    		cond = 0;
     		return cond;
     	}
-    	catch(Exception e) {
-    		System.out.println("Erro ao ler lista de personagens!\n");
-            System.out.println("Pressione ENTER para continuar...");
-            new java.util.Scanner(System.in).nextLine();
-    	}
-		return null;
+		return cond;
     }
 }

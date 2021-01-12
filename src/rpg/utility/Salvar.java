@@ -10,16 +10,16 @@ public class Salvar {
 		
 	    public void save(Personagem P){
 
-	        //Substituir endereÃ§o aqui
-	    	String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\" + P.getNomeChar() + ".txt";
+	        //Substituir endereço aqui
+	    	String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + P.getNomeChar() + ".txt";
 
 	    	try{
 	    		File arq = new File(arquivo);
 
 	    		if(arq.createNewFile()){
 
-	    			//Substituir endereÃ§o aqui
-	    			String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\" + "Lista de Personagens.txt";
+	    			//Substituir endereço aqui
+	    			String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
 
 	    			File lista = new File(listaPersonagens);
 	    			FileWriter alimentarLista = new FileWriter(lista, true);
