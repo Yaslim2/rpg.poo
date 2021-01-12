@@ -54,7 +54,7 @@ public class UX {
             		break;
         		} else {
         			personagens.add(new Mago(nome));
-            		System.out.println("Personagem criado!\n");
+            		System.out.println("\nPersonagem criado!\n");
             		System.out.println("Pressione ENTER para continuar...");
                     new java.util.Scanner(System.in).nextLine();
             		break;
@@ -134,12 +134,18 @@ public class UX {
 	
 	@SuppressWarnings("resource")
 	public void salvarPersonagens() {
-		for(Personagem p : personagens) {
-        	save.save(p);
-        }
-    	System.out.println("\nPersonagem(s) salvo(s)!\n");
-		System.out.println("Pressione ENTER para continuar...");
-		new java.util.Scanner(System.in).nextLine();
+		if(personagens.isEmpty()) {
+			System.out.println("\nSem personagens carregados para salvar!\n");
+			System.out.println("Pressione ENTER para continuar...");
+            new java.util.Scanner(System.in).nextLine();
+		} else {
+			for(Personagem p : personagens) {
+	        	save.save(p);
+	        }
+	    	System.out.println("\nPersonagem(s) salvo(s)!\n");
+			System.out.println("Pressione ENTER para continuar...");
+			new java.util.Scanner(System.in).nextLine();
+		}
 	}
 	
 	@SuppressWarnings("resource")

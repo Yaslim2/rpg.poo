@@ -53,60 +53,69 @@ public class Carregar {
 
     @SuppressWarnings("resource")
 	public void listarPersonagens(){
-        try{
+    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+    	File lista = new File(listaPersonagens);
+    	if(lista.exists()) {
+    		try{
+    			Scanner s = new Scanner(lista);
+                System.out.println("\n***Lista de personagens***\n\n");
+                while(s.hasNextLine()){
+                    System.out.println(" - " + s.nextLine());
+                }
+                System.out.println("\n\n");
 
-        	//Substituir endereço aqui
-            String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
-
-            File lista = new File(listaPersonagens);
-			Scanner s = new Scanner(lista);
-            System.out.println("\n***Lista de personagens***\n\n");
-            while(s.hasNextLine()){
-                System.out.println(" - " + s.nextLine());
+                System.out.println("Pressione ENTER para continuar...");
+                new java.util.Scanner(System.in).nextLine();
+                s.close();
             }
-            System.out.println("\n\n");
-
-            System.out.println("Pressione ENTER para continuar...");
+            catch(Exception e){
+                System.out.println("Erro ao ler lista de personagens!\n");
+                System.out.println("Pressione ENTER para continuar...");
+                new java.util.Scanner(System.in).nextLine();
+            }
+    	} else {
+    		System.out.println("\nSem personagens salvos!\n");
+    		System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
-            s.close();
+    	}
         }
-        catch(Exception e){
-            System.out.println("Erro ao ler lista de personagens!\n");
-            System.out.println("Pressione ENTER para continuar...");
-            new java.util.Scanner(System.in).nextLine();
-        }
-        
-        	}
     
     @SuppressWarnings("resource")
 	public Personagem selecaoPersonagem(){
     	//Substituir endereço aqui
     	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
-    	try {
-    		Scanner ler = new Scanner(System.in);
-    		Personagem p = null;
-    		List <String> nomesPersonagens = new ArrayList<>();
-    		String aux;
-    		File lista = new File(listaPersonagens);
-			Scanner s = new Scanner(lista);
-			int cond = 1;
-			while(s.hasNextLine()) {
-				aux = s.nextLine();
-				System.out.println(cond + " - " + aux);
-				nomesPersonagens.add(aux);
-				cond += 1;
-			}
-			System.out.print("\nSelecione qual personagem você quer escolher com base nos números: ");
-			int pers = ler.nextInt();
-			String name = nomesPersonagens.get(pers-1);
-			p = load(name);
-			return p;
-    	}
-    	catch(Exception e) {
-    		System.out.println("\nErro ao carregar personagem!\n");
-            System.out.println("Pressione ENTER para continuar...");
+    	File lista = new File(listaPersonagens);
+    	if(lista.exists()) {
+    		try {
+        		Scanner ler = new Scanner(System.in);
+        		Personagem p = null;
+        		List <String> nomesPersonagens = new ArrayList<>();
+        		String aux;
+    			Scanner s = new Scanner(lista);
+    			int cond = 1;
+    			while(s.hasNextLine()) {
+    				aux = s.nextLine();
+    				System.out.println(cond + " - " + aux);
+    				nomesPersonagens.add(aux);
+    				cond += 1;
+    			}
+    			System.out.print("\nSelecione qual personagem você quer escolher com base nos números: ");
+    			int pers = ler.nextInt();
+    			String name = nomesPersonagens.get(pers-1);
+    			p = load(name);
+    			return p;
+        	}
+        	catch(Exception e) {
+        		System.out.println("\nErro ao carregar personagem!\n");
+                System.out.println("Pressione ENTER para continuar...");
+                new java.util.Scanner(System.in).nextLine();
+        	}
+    	} else {
+    		System.out.println("\nSem personagens salvos para carregar no jogo!\n");
+    		System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
-    }
+            return null;
+    	}
 		return null;
     }
     
@@ -148,9 +157,6 @@ public class Carregar {
                 System.out.println("Pressione ENTER para continuar...");
                 new java.util.Scanner(System.in).nextLine();
         	}
-    	} else {
-    		cond = 0;
-    		return cond;
     	}
 		return cond;
     }
