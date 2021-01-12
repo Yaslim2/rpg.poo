@@ -15,6 +15,7 @@ import rpg.utility.Salvar;
 
 public class Main {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		List <Personagem> personagens = new ArrayList<>();
         Salvar save = new Salvar();
@@ -28,43 +29,80 @@ public class Main {
 
         switch(op){
             case 1:
+            	String nome;
+            	int condition;
                 System.out.println("\nQual personagem você deseja criar:\n\n1-Mago\n2-Tanque\n3-Lutador\n4-Assassino\n");
                 int operation = s.nextInt();
                 switch(operation) {
                 	case 1:
                 		System.out.println("Nome do Personagem: ");
                 		s.nextLine();
-                		personagens.add(new Mago(s.nextLine()));
-                		System.out.println("Personagem criado!\n");
-                		System.out.println("Pressione ENTER para continuar...");
-                        new java.util.Scanner(System.in).nextLine();
-                		break;
+                		nome = s.nextLine();
+                		condition = load.nomeJaCriado(nome);
+                		if(condition == 1) {
+                			System.out.println("Nome já utilizado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                    		break;
+                		} else {
+                			personagens.add(new Mago(nome));
+                    		System.out.println("Personagem criado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                            new java.util.Scanner(System.in).nextLine();
+                    		break;
+                		}
                 	case 2:
                 		System.out.println("Nome do Personagem: ");
                 		s.nextLine();
-                		personagens.add(new Tanque(s.nextLine()));
-                		System.out.println("Personagem criado!\n");
-                		System.out.println("Pressione ENTER para continuar...");
-                        new java.util.Scanner(System.in).nextLine();
-                		break;
+                		nome = s.nextLine();
+                		condition = load.nomeJaCriado(nome);
+                		if(condition == 1) {
+                			System.out.println("\n\nNome já utilizado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                    		break;
+                		} else {
+                			personagens.add(new Tanque(nome));
+                    		System.out.println("Personagem criado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                            new java.util.Scanner(System.in).nextLine();
+                    		break;
+                		}
                 	case 3:
                 		System.out.println("Nome do Personagem: ");
                 		s.nextLine();
-                		personagens.add(new Lutador(s.nextLine()));
-                		System.out.println("Personagem criado!\n");
-                		System.out.println("Pressione ENTER para continuar...");
-                        new java.util.Scanner(System.in).nextLine();
-                		break;
+                		nome = s.nextLine();
+                		condition = load.nomeJaCriado(nome);
+                		if(condition == 1) {
+                			System.out.println("Nome já utilizado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                    		break;
+                		} else {
+                			personagens.add(new Lutador(nome));
+                    		System.out.println("Personagem criado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                            new java.util.Scanner(System.in).nextLine();
+                    		break;
+                		}
                 	case 4:
                 		System.out.println("Nome do Personagem: ");
                 		s.nextLine();
-                		personagens.add(new Assassino(s.nextLine()));
-                		System.out.println("Personagem criado!\n");
+                		nome = s.nextLine();
+                		condition = load.nomeJaCriado(nome);
+                		if(condition == 1) {
+                			System.out.println("Nome já utilizado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                    		break;
+                		} else {
+                			personagens.add(new Assassino(nome));
+                    		System.out.println("Personagem criado!\n");
+                    		System.out.println("Pressione ENTER para continuar...");
+                            new java.util.Scanner(System.in).nextLine();
+                    		break;
+                		}
+                	default:
+                		System.out.println("\n1Personagem inexistente!!\n");
                 		System.out.println("Pressione ENTER para continuar...");
                         new java.util.Scanner(System.in).nextLine();
-                		break;
-                	default:
-                		System.out.println("Erro");
+                        break;
                 }
                 break;
 
@@ -82,16 +120,24 @@ public class Main {
             	for(Personagem p : personagens) {
                 	save.save(p);
                 }
-            	System.out.println("\nPersonagem salvo!\n");
+            	System.out.println("\nPersonagem(s) salvo(s)!\n");
 	    		System.out.println("Pressione ENTER para continuar...");
 	    		new java.util.Scanner(System.in).nextLine();
                 break;
 
             case 4:
-                System.out.println("\nQual personagem deseja carregar?\n");
-                String nomeArquivo = s.nextLine();
-                nomeArquivo = s.nextLine();
-                personagens.add(load.load(nomeArquivo));
+                Personagem aux = load.selecaoPersonagem();
+                int cond = load.nomeRepetido(personagens, aux);
+                if(cond == 1) {
+                	System.out.println("\nPERSONAGEM JÁ CARREGADO!!!!\n");
+                	System.out.println("Pressione ENTER para continuar...");
+                	new java.util.Scanner(System.in).nextLine();
+                } else {
+                	personagens.add(aux);
+                	System.out.println("\nPersonagem carregado!\n");
+                    System.out.println("Pressione ENTER para continuar...");
+                    new java.util.Scanner(System.in).nextLine();
+                }
                 break;
 
             case 5:
