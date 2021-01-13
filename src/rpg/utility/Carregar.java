@@ -17,7 +17,7 @@ public class Carregar {
 	public Personagem load(String nomeArquivo){
         
 		//Substituir endereço aqui
-        String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + nomeArquivo + ".txt";
+        String arquivo = nomeArquivo + ".txt";
 
         try{
             File arq = new File(arquivo);
@@ -53,7 +53,7 @@ public class Carregar {
 
     @SuppressWarnings("resource")
 	public void listarPersonagens(){
-    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+    	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	if(lista.exists() && lista.length() > 0) {
     		try{
@@ -83,7 +83,7 @@ public class Carregar {
     @SuppressWarnings("resource")
 	public Personagem selecaoPersonagem(){
     	//Substituir endereço aqui
-    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+    	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	if(lista.exists() && lista.length() > 0) {
     		try {
@@ -131,7 +131,7 @@ public class Carregar {
     
     @SuppressWarnings("resource")
 	public Integer nomeJaCriado(String name) {
-    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+    	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	int cond = 0;
     	if(lista.exists() && lista.length() > 0) {
@@ -163,7 +163,7 @@ public class Carregar {
     
     @SuppressWarnings("resource")
 	public List<String> personagensSalvos(){
-    	String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+    	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	if(lista.exists() && lista.length() > 0) {
     		try {

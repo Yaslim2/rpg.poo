@@ -4,8 +4,8 @@ import rpg.ataquesespeciais.Ataques;
 
 public interface Interface {
 	public TiposDePersonagem getTipo();
-	public void setTipo(TiposDePersonagem tipo);
 	public int getPontosDeVida();
+	public void setPontosDeVida(int pontosDeVida);
 	public int getPoderDeHabilidade();
 	public int getPoderAtaqueFisico();
 	public String getNomeChar();

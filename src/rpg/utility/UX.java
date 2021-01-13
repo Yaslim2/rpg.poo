@@ -19,6 +19,7 @@ public class UX {
     private Boolean pararPrograma = false;
     private Apagar delete = new Apagar();
     private Editar edite = new Editar();
+    
 	
 	public UX() {}
 
@@ -37,6 +38,14 @@ public class UX {
 	public Boolean getPararPrograma() {
 		return pararPrograma;
 	}
+	
+	public Apagar getDelete() {
+		return delete;
+	}
+
+	public Editar getEdite() {
+		return edite;
+	}
 
 	@SuppressWarnings("resource")
 	public void criarPersonagem() {
@@ -48,7 +57,7 @@ public class UX {
         	int operation = s.nextInt();
         	switch(operation) {
         	case 1:
-        		System.out.println("Nome do Personagem: ");
+        		System.out.println("\nNome do Personagem: ");
         		s.nextLine();
         		nome = s.nextLine();
         		condition = load.nomeJaCriado(nome);

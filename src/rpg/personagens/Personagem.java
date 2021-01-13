@@ -23,13 +23,14 @@ public abstract class Personagem implements Interface{
 	public TiposDePersonagem getTipo() {
 		return tipo;
 	}
-        @Override
-	public void setTipo(TiposDePersonagem tipo) {
-		this.tipo = tipo;
-	}
-        @Override    
+
+		@Override    
 	public int getPontosDeVida() {
 		return pontosDeVida;
+	}
+		@Override
+	public void setPontosDeVida(int pontosDeVida) {
+		this.pontosDeVida = pontosDeVida;
 	}
         @Override
 	public int getPoderDeHabilidade() {

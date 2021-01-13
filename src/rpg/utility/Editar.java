@@ -19,7 +19,7 @@ public class Editar {
 	
 	@SuppressWarnings("resource")
 	public Personagem pegarPersonagem() {
-		String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+		String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	if(lista.exists() && lista.length() > 0) {
     		try {
@@ -51,14 +51,14 @@ public class Editar {
 	}
 	@SuppressWarnings("resource")
 	public Personagem editarPersonagem(Personagem P) {
-		String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+		String listaPersonagens = "Lista de Personagens.txt";
 		File lista = new File(listaPersonagens);
 		if(load.personagensSalvos() != null) {
 			if(lista.exists() && lista.length() > 0) {
 				if(P!=null) {
 					try {
 						
-						String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + P.getNomeChar() + ".txt";
+						String arquivo = P.getNomeChar() + ".txt";
 						File arq = new File(arquivo);
 						
 						int cont = 0;
@@ -68,7 +68,7 @@ public class Editar {
 						Scanner ler = new Scanner(System.in);
 						nomePersonagens = load.personagensSalvos();
 						
-						System.out.print("Digite um novo nome para o personagem: ");
+						System.out.print("\nDigite um novo nome para o personagem: ");
 						String name = ler.nextLine();
 						
 						for(int i = 0; i<nomePersonagens.size(); i++) {
@@ -98,7 +98,7 @@ public class Editar {
 						s.close();
 						arq.delete();
 						
-						System.out.println("Escolha uma nova classe com base nos números:\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino");
+						System.out.println("\nEscolha uma nova classe com base nos números:\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino");
 						int choice = ler.nextInt();
 						switch(choice) {
 							case 1:
@@ -163,11 +163,11 @@ public class Editar {
 			}
 			
 		} catch (InputMismatchException e) {
-			System.out.println("Erro!");
+			System.out.println("Erro inesperado!");
 			System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
 		} catch (Exception e) {
-			System.out.println("Erro!");
+			System.out.println("Erro inesperado!");
 			System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
 		}

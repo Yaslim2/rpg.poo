@@ -11,9 +11,9 @@ public class Apagar {
 	
 	@SuppressWarnings("resource")
 	public void apagarArquivo(String nome) {
-		String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + nome + ".txt";
+		String arquivo = nome + ".txt";
 		File arq = new File(arquivo);
-		String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+		String listaPersonagens = "Lista de Personagens.txt";
 		File lista = new File(listaPersonagens);
 		if(load.personagensSalvos() != null) {
 			if(arq.exists() && lista.length() > 0) {
@@ -64,7 +64,7 @@ public class Apagar {
 	
 	@SuppressWarnings("resource")
 	public String pegarNome() {
-		String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
+		String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	int pers;
     	if(lista.exists() && lista.length() > 0) {
