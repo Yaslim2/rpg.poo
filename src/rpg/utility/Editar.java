@@ -55,80 +55,85 @@ public class Editar {
 		File lista = new File(listaPersonagens);
 		if(load.personagensSalvos() != null) {
 			if(lista.exists() && lista.length() > 0) {
-				try {
-					
-					String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + P.getNomeChar() + ".txt";
-					File arq = new File(arquivo);
-					
-					int cont = 0;
-					Personagem aux = null;
-					String nomeAntigo = P.getNomeChar();
-					List <String> nomePersonagens = new ArrayList<>();
-					Scanner ler = new Scanner(System.in);
-					nomePersonagens = load.personagensSalvos();
-					
-					System.out.print("Digite um novo nome para o personagem: ");
-					String name = ler.nextLine();
-					
-					for(int i = 0; i<nomePersonagens.size(); i++) {
-						if(nomePersonagens.get(i).equals(nomeAntigo)) {
-							cont = i;
+				if(P!=null) {
+					try {
+						
+						String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + P.getNomeChar() + ".txt";
+						File arq = new File(arquivo);
+						
+						int cont = 0;
+						Personagem aux = null;
+						String nomeAntigo = P.getNomeChar();
+						List <String> nomePersonagens = new ArrayList<>();
+						Scanner ler = new Scanner(System.in);
+						nomePersonagens = load.personagensSalvos();
+						
+						System.out.print("Digite um novo nome para o personagem: ");
+						String name = ler.nextLine();
+						
+						for(int i = 0; i<nomePersonagens.size(); i++) {
+							if(nomePersonagens.get(i).equals(nomeAntigo)) {
+								cont = i;
+							}
 						}
+						
+						nomePersonagens.remove(cont);
+						nomePersonagens.add(name);
+						
+						FileWriter alimentarLista = new FileWriter(lista);
+						Scanner s = new Scanner(lista);
+						
+						while(s.hasNextLine()) {
+							alimentarLista.write("");
+						}
+						for(String p: nomePersonagens) {
+							alimentarLista.write(p + "\n");
+						}
+						
+						alimentarLista.close();
+						s.close();
+						arq.delete();
+						
+						System.out.println("Escolha uma nova classe com base nos números:\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino");
+						int choice = ler.nextInt();
+						switch(choice) {
+							case 1:
+								aux = new Mago(name);
+								save.saveEspecial(aux);
+					    		break;
+							case 2:
+								aux = new Tanque(name);
+								save.saveEspecial(aux);
+					    		break;
+							case 3:
+								aux = new Lutador(name);
+								save.saveEspecial(aux);
+					    		break;
+							case 4:
+								aux = new Assassino(name);
+								save.saveEspecial(aux);
+					    		break;
+						}
+						
+						System.out.println("\nPersonagem modificado!!\n");
+						System.out.println("Pressione ENTER para continuar...");
+						new java.util.Scanner(System.in).nextLine();
+						return aux;
+			            
+					} catch (InputMismatchException e) {
+						System.out.println("\nErro ao editar personagem! Digite um caractere válido!\n");
+			            System.out.println("Pressione ENTER para continuar...");
+			            new java.util.Scanner(System.in).nextLine();
 					}
-					
-					nomePersonagens.remove(cont);
-					nomePersonagens.add(name);
-					
-					FileWriter alimentarLista = new FileWriter(lista);
-					for(String p: nomePersonagens) {
-						alimentarLista.write(p + "\n");
-		    			alimentarLista.close();
+					catch (Exception e) {
+						System.out.println("\nErro ao editar personagem!\n");
+			            System.out.println("Pressione ENTER para continuar...");
+			            new java.util.Scanner(System.in).nextLine();
 					}
-					
-					arq.delete();
-					
-					System.out.println("Escolha uma nova classe com base nos números:\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino");
-					int choice = ler.nextInt();
-					switch(choice) {
-						case 1:
-							aux = new Mago(name);
-							save.saveEspecial(aux);
-				    		break;
-						case 2:
-							aux = new Tanque(name);
-							save.saveEspecial(aux);
-				    		break;
-						case 3:
-							aux = new Lutador(name);
-							save.saveEspecial(aux);
-				    		break;
-						case 4:
-							aux = new Assassino(name);
-							save.saveEspecial(aux);
-				    		break;
-					}
-					
-					System.out.println("\nPersonagem modificado!!\n");
-					System.out.println("Pressione ENTER para continuar...");
-					new java.util.Scanner(System.in).nextLine();
-					return aux;
-		            
-				} catch (InputMismatchException e) {
-					System.out.println("\nErro ao editar personagem! Digite um caractere válido!\n");
-		            System.out.println("Pressione ENTER para continuar...");
-		            new java.util.Scanner(System.in).nextLine();
 				}
-				catch (Exception e) {
-					System.out.println("\nErro ao editar personagem!\n");
-		            System.out.println("Pressione ENTER para continuar...");
-		            new java.util.Scanner(System.in).nextLine();
-				}
-			} else {
-				System.out.println("Não existem personagens salvos para modificar!");
-				System.out.println("Pressione ENTER para continuar...");
-	            new java.util.Scanner(System.in).nextLine();
 			}
-		}
+			return null;
+			}
 		return null;
 		
 	}
@@ -150,11 +155,11 @@ public class Editar {
 			}
 			
 		} catch (InputMismatchException e) {
-			System.out.println("Erro aqui em");
+			System.out.println("Erro!");
 			System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
 		} catch (Exception e) {
-			System.out.println("ERRORRRRRRR!!!!!");
+			System.out.println("Erro!");
 			System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
 		}

@@ -29,11 +29,18 @@ public class Apagar {
 						personagens.remove(pos);
 						
 						FileWriter alimentarLista = new FileWriter(lista);
+						Scanner s = new Scanner(lista);
+						
+						while(s.hasNextLine()) {
+							alimentarLista.write("");
+						}
+						
 						for(String p: personagens) {
 							alimentarLista.write(p + "\n");
-			    			alimentarLista.close();
 						}
 		    
+						alimentarLista.close();
+						s.close();
 						arq.delete();
 						
 						System.out.println("\nPersonagem deletado!!\n");
@@ -59,6 +66,7 @@ public class Apagar {
 	public String pegarNome() {
 		String listaPersonagens = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
+    	int pers;
     	if(lista.exists() && lista.length() > 0) {
     		try {
         		Scanner ler = new Scanner(System.in);
@@ -73,7 +81,7 @@ public class Apagar {
     				cond += 1;
     			}
     			System.out.print("\nSelecione qual personagem você deseja excluir com base nos números: ");
-    			int pers = ler.nextInt();
+    			pers = ler.nextInt();
     			String name = nomesPersonagens.get(pers-1);
     			return name;
         	}

@@ -41,7 +41,6 @@ public class Main {
             case 7:
             	ux.editarPersonagem();
             	break;
-            	
             case 0:
                 ux.encerrarPrograma();
                 sc.close();

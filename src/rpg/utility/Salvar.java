@@ -27,7 +27,7 @@ public class Salvar {
 	    			alimentarLista.close();
 	    		}
 
-	    		FileWriter w = new FileWriter(arq, true);
+	    		FileWriter w = new FileWriter(arq);
 	    		w.write(P.getTipo().toString() + "\n");
 	    		w.write(P.getNomeChar() + "\n");
 	    		w.write(P.getPontosDeVida() + "\n");
