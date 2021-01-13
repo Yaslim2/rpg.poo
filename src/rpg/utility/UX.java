@@ -18,6 +18,7 @@ public class UX {
     private Scanner s = new Scanner(System.in);
     private Boolean pararPrograma = false;
     private Apagar delete = new Apagar();
+    private Editar edite = new Editar();
 	
 	public UX() {}
 
@@ -211,7 +212,9 @@ public class UX {
 					aux = i;
 				}
 			}
-			personagens.remove(aux);
+			if(!personagens.isEmpty()) {
+				personagens.remove(aux);
+			}
 		}
 	}
 	
@@ -223,5 +226,13 @@ public class UX {
 			}
 		}
 		return cond;
+	}
+	
+	public void editarPersonagem() {
+		Personagem p = edite.pegarPersonagem();
+		
+		Personagem aux = edite.editarPersonagem(p);
+		
+		edite.editarArray(personagens, p, aux);
 	}
 }

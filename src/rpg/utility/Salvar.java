@@ -27,7 +27,7 @@ public class Salvar {
 	    			alimentarLista.close();
 	    		}
 
-	    		FileWriter w = new FileWriter(arq);
+	    		FileWriter w = new FileWriter(arq, true);
 	    		w.write(P.getTipo().toString() + "\n");
 	    		w.write(P.getNomeChar() + "\n");
 	    		w.write(P.getPontosDeVida() + "\n");
@@ -44,4 +44,29 @@ public class Salvar {
 	            new java.util.Scanner(System.in).nextLine();
 	        }
 	    }
+	 
+	 @SuppressWarnings("resource")
+	public void saveEspecial(Personagem P) {
+		 String arquivo = "C:\\Users\\T-Gamer\\Desktop\\Yaslim\\Arquivos - POO\\" + P.getNomeChar() + ".txt";
+
+	    	try{
+	    		File arq = new File(arquivo);
+	    		arq.createNewFile();
+	    		FileWriter w = new FileWriter(arq, true);
+	    		w.write(P.getTipo().toString() + "\n");
+	    		w.write(P.getNomeChar() + "\n");
+	    		w.write(P.getPontosDeVida() + "\n");
+	    		w.write(P.getPoderDeHabilidade() + "\n");
+	    		w.write(P.getPoderAtaqueFisico() + "\n");
+	    		w.write(P.getArmadura() + "\n");
+	    		w.write(P.getResistenciaMagica() + "\n");
+	    		w.close();
+	    	}
+	    	catch(Exception e){
+	    		System.out.println("Erro ao salvar personagem!\n");
+
+	    		System.out.println("Pressione ENTER para continuar...");
+	            new java.util.Scanner(System.in).nextLine();
+	        }
+	 }
 }
