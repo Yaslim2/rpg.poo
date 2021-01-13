@@ -78,7 +78,11 @@ public class Editar {
 						}
 						
 						nomePersonagens.remove(cont);
-						nomePersonagens.add(name);
+						if(!nomePersonagens.isEmpty()) {
+							nomePersonagens.add(cont, name);
+						} else {
+							nomePersonagens.add(cont, name);
+						}
 						
 						FileWriter alimentarLista = new FileWriter(lista);
 						Scanner s = new Scanner(lista);
@@ -151,7 +155,11 @@ public class Editar {
 			
 			if(cond != -50) {
 				personagem.remove(cond);
-				personagem.add(p2);
+				if(!personagem.isEmpty()) {
+					personagem.add(cond, p2);
+				} else {
+					personagem.add(cond, p2);
+				}
 			}
 			
 		} catch (InputMismatchException e) {

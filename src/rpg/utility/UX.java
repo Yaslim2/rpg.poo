@@ -203,6 +203,7 @@ public class UX {
 	}
 	
 	public void deletarPersonagens() {
+		Boolean condition = false;
 		int aux = 0;
 		String pers = delete.pegarNome();
 		delete.apagarArquivo(pers);
@@ -211,10 +212,13 @@ public class UX {
 			
 			for(int i = 0; i<personagens.size(); i++) {
 				if(personagens.get(i).getNomeChar().equals(pers)) {
+					condition = true;
 					aux = i;
 				}
 			}
-			personagens.remove(aux);
+			if(condition == true) {
+				personagens.remove(aux);
+			}
 		}
 		}
 	}
@@ -233,6 +237,7 @@ public class UX {
 		Personagem p = edite.pegarPersonagem();
 		
 		Personagem aux = edite.editarPersonagem(p);
+
 		if(!personagens.isEmpty()) {
 			edite.editarArray(personagens, p, aux);
 		}
