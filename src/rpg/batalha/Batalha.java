@@ -127,6 +127,9 @@ public class Batalha {
                                             // 4 - poderDeHabilidadeEspecial
                                             
                                             //lutadores.get(i).ataqueEspecial().get(0);
+
+                                            System.out.println("lutadores.get(i).getAtaqueEspecial()");
+
                                     }
                                     
                                     System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " ESTÁ ATACANDO " + sobAtaque.getNomeChar());
@@ -137,6 +140,7 @@ public class Batalha {
                                     break;
                             //defesa
                             case 2:
+
                                 System.out.println("Qual tipo de defesa deseja aprimorar?\n\n1 - Resistência Mágica\n2 - Armadura\n");
                                 
                                 int tipoDefesa = entrada.nextInt();
@@ -160,6 +164,7 @@ public class Batalha {
                                 
                                 System.out.println("Pressione ENTER para continuar...");
                                 new java.util.Scanner(System.in).nextLine();
+
                                 
                                 break;
                             //POWERUP    
@@ -167,11 +172,18 @@ public class Batalha {
                                 System.out.println("\n*****O guerreiro " + lutadores.get(i).getNomeChar() + " está upando suas habilidades!*****\n");
                                 lutadores.get(i).powerUp();
                                 lutadores.get(i).mostrarDados();
+
                                 System.out.println("\n******************************");
                                 System.out.println("\n");
                                 System.out.println("Pressione ENTER para continuar...");
                                 new java.util.Scanner(System.in).nextLine();
                                 
+
+                                System.out.println("\n");
+                                System.out.println("Pressione ENTER para continuar...");
+                                new java.util.Scanner(System.in).nextLine();
+                                System.out.println("\n******************************");
+
                                 break;
                             }
                         
@@ -220,7 +232,4 @@ public class Batalha {
     public void restaurar(List p){
         this.lutadores = p;
     }
-    
-    
-    
 }
