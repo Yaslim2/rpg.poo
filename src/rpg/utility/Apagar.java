@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Apagar {
-	Carregar load = new Carregar();
+	private Carregar load = new Carregar();
 	
 	@SuppressWarnings("resource")
 	public void apagarArquivo(String nome) {
@@ -69,19 +69,35 @@ public class Apagar {
     	int pers;
     	if(lista.exists() && lista.length() > 0) {
     		try {
+    			StringBuilder sb = new StringBuilder();
         		Scanner ler = new Scanner(System.in);
         		List <String> nomesPersonagens = new ArrayList<>();
         		String aux;
     			Scanner s = new Scanner(lista);
     			int cond = 1;
+    			System.out.println("\n----------------------------------------\n");
     			while(s.hasNextLine()) {
     				aux = s.nextLine();
     				System.out.println(cond + " - " + aux);
+    				sb.append(cond + " - " + aux + "\n");
     				nomesPersonagens.add(aux);
     				cond += 1;
     			}
+    			System.out.println("\n----------------------------------------\n");
     			System.out.print("\nSelecione qual personagem você deseja excluir com base nos números: ");
     			pers = ler.nextInt();
+    			while(true) {
+    				if((pers-1) < 0 || (pers-1) > nomesPersonagens.size()) {
+    					System.out.println("\nValor inválido. Digite um valor válido!\n");
+    					System.out.println("\n----------------------------------------\n");
+    					System.out.println(sb.toString());
+    					System.out.println("----------------------------------------\n");
+    	    			System.out.print("\nSelecione qual personagem você deseja excluir com base nos números: ");
+    	    			pers = ler.nextInt();
+    				} else {
+    					break;
+    				}
+    			}
     			String name = nomesPersonagens.get(pers-1);
     			return name;
         	}

@@ -13,7 +13,9 @@ public interface Interface {
 	public Ataques getAtaqueEspecial();
 	public Ataques getAtaqueBasico();
 	public int getArmadura();
+	public void setArmadura(int armadura);
 	public int getResistenciaMagica();
+	public void setResistenciaMagica(int resistenciaMagica);
 	public void mostrarDados();
 	public void ataqueEspecial();
     public void powerUp();

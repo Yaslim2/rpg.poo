@@ -60,10 +60,19 @@ public abstract class Personagem implements Interface{
 	public int getArmadura() {
 		return armadura;
 	}
+        
+		@Override
+    public void setArmadura(int armadura) {
+    	this.armadura = armadura;
+    }
         @Override
 	public int getResistenciaMagica() {
 		return resistenciaMagica;
 	}
+		@Override
+    public void setResistenciaMagica(int resistenciaMagica) {
+        this.resistenciaMagica = resistenciaMagica;
+     }
         @Override
 	public void powerUp() {}
         @Override

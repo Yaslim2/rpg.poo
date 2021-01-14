@@ -12,37 +12,49 @@ public class Main {
 		UX ux = new UX();
         
         while(!(ux.getPararPrograma())){
-        System.out.println("\n\n***MENU***\n\n1 - Criar personagem\n2 - Exibir todos os personagens carregados\n3 - Salvar todos os personagens\n4 - Carregar personagem\n5 - Lista de personagens salvos\n6 - Deletar personagem\n7 - Editar personagem\n0 - Encerrar programa\n");
+        System.out.println("\n\n***MENU***\n\n1 - BATALHAR!!\n2 - Personagens\n3 - Encerrar programa\n");
 
         int op = sc.nextInt();
         switch(op){
             case 1:
-            	ux.criarPersonagem();
+            	ux.Batalhar();
             	break;
             case 2:
-            	ux.exibirPersonagens();
-                break;
+            	int aux = -1;
+            	while(aux != 0) {
+            		System.out.println("\n\n***MENU DE PERSONAGENS***\n\n1 - Criar Personagem\n2 - Salvar personagens criados\n3 - Carregar personagem\n4 - Exibir personagens carregados\n5 - Personagens salvos\n6 - Editar personagem\n7 - Deletar personagem\n0 - Voltar ao menu principal\n\n");
+                	aux = sc.nextInt();
+                	switch(aux) {
+                		case 1:
+                			ux.criarPersonagem();
+                			break;
+                		case 2:
+                			ux.salvarPersonagens();
+                			break;
+                		case 3:
+                			ux.carregarPersonagem();
+                			break;
+                		case 4:
+                			ux.exibirPersonagens();
+                			break;
+                		case 5:
+                			ux.listarPersonagensSalvos();
+                			break;
+                		case 6:
+                			ux.editarPersonagem();
+                			break;
+                		case 7:
+                			ux.deletarPersonagens();
+                			break;
+                		case 0:
+                			aux = 0;
+                			break;
+                	}
+            	}
+            	break;
 
             case 3:
-            	ux.salvarPersonagens();
-                break;
-
-            case 4:
-            	ux.carregarPersonagem();
-                break;
-
-            case 5:
-                ux.listarPersonagensSalvos();
-                break;
-            
-            case 6:
-            	ux.deletarPersonagens();
-            	break;
-            case 7:
-            	ux.editarPersonagem();
-            	break;
-            case 0:
-                ux.encerrarPrograma();
+            	ux.encerrarPrograma();
                 sc.close();
                 break;
         	}

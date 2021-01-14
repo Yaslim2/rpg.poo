@@ -14,8 +14,8 @@ import rpg.personagens.Personagem;
 import rpg.personagens.Tanque;
 
 public class Editar {
-	Carregar load = new Carregar();
-	Salvar save = new Salvar();
+	private Carregar load = new Carregar();
+	private Salvar save = new Salvar();
 	
 	@SuppressWarnings("resource")
 	public Personagem pegarPersonagem() {
@@ -23,20 +23,36 @@ public class Editar {
     	File lista = new File(listaPersonagens);
     	if(lista.exists() && lista.length() > 0) {
     		try {
+    			StringBuilder sb = new StringBuilder();
         		Scanner ler = new Scanner(System.in);
         		Personagem p;
         		List <String> nomesPersonagens = new ArrayList<>();
         		String aux;
     			Scanner s = new Scanner(lista);
     			int cond = 1;
+    			System.out.println("\n----------------------------------------\n");
     			while(s.hasNextLine()) {
     				aux = s.nextLine();
     				System.out.println(cond + " - " + aux);
+    				sb.append(cond + " - " + aux + "\n");
     				nomesPersonagens.add(aux);
     				cond += 1;
     			}
+    			System.out.println("\n----------------------------------------\n");
     			System.out.print("\nSelecione qual personagem você deseja editar com base nos números: ");
     			int pers = ler.nextInt();
+    			while(true) {
+    				if((pers-1) < 0 || (pers-1) > nomesPersonagens.size()) {
+        				System.out.println("\nValor inválido.. Insira um valor que esteja dentro do intervalo!\n");
+        				System.out.println("\n----------------------------------------\n");
+        				System.out.println(sb.toString());
+        				System.out.println("----------------------------------------\n");
+            			System.out.print("\nSelecione qual personagem você deseja editar com base nos números: ");
+            			pers = ler.nextInt();
+        			} else {
+        				break;
+        			}
+    			}
     			String name = nomesPersonagens.get(pers-1);
     			p = load.load(name);
     			return p;
@@ -100,6 +116,16 @@ public class Editar {
 						
 						System.out.println("\nEscolha uma nova classe com base nos números:\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino");
 						int choice = ler.nextInt();
+						while(true) {
+							if(choice < 1 || choice > 4) {
+								System.out.println("\nValor inválido. Digite um valor válido!\n");
+								System.out.println("\nEscolha uma nova classe com base nos números:\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino");
+								choice = ler.nextInt();
+							} else {
+								break;
+							}
+						}
+						
 						switch(choice) {
 							case 1:
 								aux = new Mago(name);
