@@ -1,5 +1,6 @@
 package rpg.personagens;
 
+import java.util.List;
 import rpg.ataquesespeciais.Ataques;
 
 public abstract class Personagem implements Interface{
@@ -13,24 +14,39 @@ public abstract class Personagem implements Interface{
 	protected int armadura;
 	protected int resistenciaMagica;
 	protected TiposDePersonagem tipo;
+        protected int pontosHabilidade;
 
 
 	public Personagem(String nomeChar) {
 		this.nomeChar = nomeChar;
 	}
+        
+        @Override
+        public void setPontosDeVida(int pontosDeVida) {
+            this.pontosDeVida = pontosDeVida;
+        }
+
+        @Override
+        public void setArmadura(int armadura) {
+            this.armadura = armadura;
+        }
+
+        @Override
+        public void setResistenciaMagica(int resistenciaMagica) {
+            this.resistenciaMagica = resistenciaMagica;
+        }
 	
         @Override
 	public TiposDePersonagem getTipo() {
 		return tipo;
 	}
-
-		@Override    
+        @Override
+	public void setTipo(TiposDePersonagem tipo) {
+		this.tipo = tipo;
+	}
+        @Override    
 	public int getPontosDeVida() {
 		return pontosDeVida;
-	}
-		@Override
-	public void setPontosDeVida(int pontosDeVida) {
-		this.pontosDeVida = pontosDeVida;
 	}
         @Override
 	public int getPoderDeHabilidade() {
@@ -60,25 +76,19 @@ public abstract class Personagem implements Interface{
 	public int getArmadura() {
 		return armadura;
 	}
-        
-		@Override
-    public void setArmadura(int armadura) {
-    	this.armadura = armadura;
-    }
         @Override
 	public int getResistenciaMagica() {
 		return resistenciaMagica;
 	}
-		@Override
-    public void setResistenciaMagica(int resistenciaMagica) {
-        this.resistenciaMagica = resistenciaMagica;
-     }
         @Override
 	public void powerUp() {}
         @Override
 	public void mostrarDados() {}
+        
 	@Override
-	public void ataqueEspecial() {}
-	
-
+	public void ataqueEspecial() {}   
+        
+        @Override
+        public List<Integer> getAtaqueDoAtaqueEspecial(){return null;}
+    
 }
