@@ -12,7 +12,7 @@ public class Main {
 		UX ux = new UX();
         
         while(!(ux.getPararPrograma())){
-        System.out.println("\n\n***MENU***\n\n1 - BATALHAR!!\n2 - Personagens\n3 - Encerrar programa\n");
+        System.out.println("\n\n***MENU***\n\n1 - BATALHAR!\n2 - Personagens\n3 - Encerrar programa\n");
 
         int op = sc.nextInt();
         switch(op){
