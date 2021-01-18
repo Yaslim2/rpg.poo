@@ -260,7 +260,7 @@ public class UX {
 		if(!personagens.isEmpty() && personagens.size() > 1) {
 			Scanner sc = new Scanner(System.in);
 			try {
-				Batalha battle;
+				Batalha battle = new Batalha();
 				List<Personagem> backup = new ArrayList<>();
 				for(int i = 0; i < personagens.size(); i++) {
 					backup.add(personagens.get(i));
@@ -309,7 +309,7 @@ public class UX {
 								System.out.println("\nEscolha um válido!!\n");
 							} else {
 								System.out.println("\n\nPersonagem adicionado a batalha!\n\n");
-								lutadores.add(personagens.get(choice-1));
+								lutadores.add(backup.get(choice-1));
 								backup.remove(choice-1);
 							}
 							
@@ -340,11 +340,11 @@ public class UX {
 								}
 								
 								if(entrarNaBatalha == true) {
-									battle = new Batalha(lutadores);
+									battle.Batalhar(lutadores);
 								}
 							} else {
 								System.out.println("\nNão existem mais personagens para serem adicionados a batalha!\n");
-								System.out.println("\nDeseja iniciar a batalha? (1 - Sim) (2 - Não)");
+								System.out.println("\nDeseja iniciar a batalha? (1 - Sim) (2 - Não)\n");
 								int lek = sc.nextInt();
 								while(true) {
 									if(lek == 1 || lek == 2) {
@@ -358,7 +358,10 @@ public class UX {
 								}
 								if (lek == 1) {
 									entrarNaBatalha = true;
-									battle = new Batalha(lutadores);
+									System.out.println("\nADENTRANDO NOS CAMPOS DE BATALHA!!\n");
+									System.out.println("Pressione ENTER para continuar...");
+							        new java.util.Scanner(System.in).nextLine();
+									battle.Batalhar(lutadores);
 								} else {
 									entrarNaBatalha = true;
 									System.out.println("\nVocê será redirecionado ao menu principal.\n");
@@ -374,7 +377,7 @@ public class UX {
 				new java.util.Scanner(System.in).nextLine();
 			}
 				} else {
-				System.out.println("\nPersonagens insuficientes para uma batalha!\n");
+				System.out.println("\nPersonagens insuficientes para uma batalha! Carregue mais personagens para iniciar uma batalha.\n");
 				System.out.println("Pressione ENTER para continuar...");
 	            new java.util.Scanner(System.in).nextLine();
 			}

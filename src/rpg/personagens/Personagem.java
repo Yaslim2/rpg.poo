@@ -14,7 +14,7 @@ public abstract class Personagem implements Interface{
 	protected int armadura;
 	protected int resistenciaMagica;
 	protected TiposDePersonagem tipo;
-        protected int pontosHabilidade;
+    protected int pontosHabilidade;
 
 
 	public Personagem(String nomeChar) {

@@ -6,20 +6,20 @@ import rpg.ataquesespeciais.Ataques;
 import rpg.ataquesespeciais.TipoDoAtaque;
 
 public class Lutador extends Personagem{
-	private Ataques attSp = new Ataques("FÃºria", TipoDoAtaque.valueOf("AD"));
-	private Ataques attBasics = new Ataques("Auto-Ataque", TipoDoAtaque.valueOf("AD"));
+	private Ataques attSp = new Ataques("FÚRIA", TipoDoAtaque.valueOf("AD"));
+	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AD"));
 	public List <Integer> attEspecial = new ArrayList<>();
         
 	public Lutador(String nomeChar) {
 		super(nomeChar);
-		pontosDeVida = 210;
-		poderDeHabilidade = 999;
-		poderAtaqueFisico = 999;
-		armadura = 40;
-		resistenciaMagica = 35;
+		pontosDeVida = 250;
+		poderDeHabilidade = 0;
+		poderAtaqueFisico = 30;
+		armadura = 45;
+		resistenciaMagica = 45;
 		ataqueEspecial = attSp;
 		ataqueBasico = attBasics;
-                pontosHabilidade = 0;
+        pontosHabilidade = 0;
 		tipo = TiposDePersonagem.valueOf("LUTADOR");
 	}
         
@@ -44,7 +44,7 @@ public class Lutador extends Personagem{
                 //attEspecial.add(resistenciaMagicaEspecial);
                 attEspecial.add(poderDeHabilidadeEspecial);
             } else {
-                System.out.println("Sua habilidade especial ainda nÃ£o estÃ¡ pronta.\n");
+                System.out.println("Sua habilidade especial ainda não está pronta.\n");
             }
                 
 	}
@@ -66,7 +66,7 @@ public class Lutador extends Personagem{
 	@Override
 	public void mostrarDados() {
 		System.out.println(nomeChar +" - " + "Lutador" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque FÃ­sico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistÃªncia MÃ¡gica: " + resistenciaMagica + 
+				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência MÃ¡gica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
 }

@@ -7,19 +7,19 @@ import rpg.ataquesespeciais.TipoDoAtaque;
 
 public class Mago extends Personagem{
 	
-	private Ataques attSp = new Ataques("Embrazar", TipoDoAtaque.valueOf("AP"));
-	private Ataques attBasics = new Ataques("Auto-Ataque", TipoDoAtaque.valueOf("AP"));
+	private Ataques attSp = new Ataques("CONCENTRAÇÃO LUNAR", TipoDoAtaque.valueOf("AP"));
+	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AP"));
 	public List <Integer> attEspecial = new ArrayList<>();
 	public Mago(String nomeChar) {
 		super(nomeChar);
-		pontosDeVida = 150;
-		poderDeHabilidade = 30;
+		pontosDeVida = 175;
+		poderDeHabilidade = 40;
 		poderAtaqueFisico = 0;
-		armadura = 20;
-		resistenciaMagica = 20;
+		armadura = 35;
+		resistenciaMagica = 35;
 		ataqueEspecial = attSp;
 		ataqueBasico = attBasics;
-                pontosHabilidade = 0;
+        pontosHabilidade = 0;
 		tipo = TiposDePersonagem.valueOf("MAGO");
 	}
 	
@@ -68,8 +68,8 @@ public class Mago extends Personagem{
 	
 	@Override
 	public void mostrarDados() {
-		System.out.println(nomeChar +" - " + "Lutador" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque FÃ­sico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistÃªncia MÃ¡gica: " + resistenciaMagica + 
+		System.out.println(nomeChar +" - " + "Mago" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
+				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência MÃ¡gica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
 }

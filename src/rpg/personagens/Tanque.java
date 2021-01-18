@@ -6,17 +6,17 @@ import rpg.ataquesespeciais.Ataques;
 import rpg.ataquesespeciais.TipoDoAtaque;
 
 public class Tanque extends Personagem{
-	private Ataques attSp = new Ataques("ForÃ§a Excessiva", TipoDoAtaque.valueOf("AD"));
-	private Ataques attBasics = new Ataques("Auto-Ataque", TipoDoAtaque.valueOf("AD"));
+	private Ataques attSp = new Ataques("DURO COMO PEDRA", TipoDoAtaque.valueOf("AD"));
+	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AD"));
 	public List <Integer> attEspecial = new ArrayList<>();
         
 	public Tanque(String nomeChar) {
 		super(nomeChar);
-		pontosDeVida = 300;
+		pontosDeVida = 325;
 		poderDeHabilidade = 0;
-		poderAtaqueFisico = 15;
-		armadura = 50;
-		resistenciaMagica = 50;
+		poderAtaqueFisico = 25;
+		armadura = 60;
+		resistenciaMagica = 60;
 		ataqueEspecial = attSp;
 		ataqueBasico = attBasics;
                 pontosHabilidade = 0;
@@ -65,8 +65,8 @@ public class Tanque extends Personagem{
 	
 	@Override
 	public void mostrarDados() {
-		System.out.println(nomeChar +" - " + "Lutador" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque FÃ­sico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistÃªncia MÃ¡gica: " + resistenciaMagica + 
+		System.out.println(nomeChar +" - " + "Tanque" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
+				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência Mágica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
 }

@@ -6,16 +6,16 @@ import rpg.ataquesespeciais.Ataques;
 import rpg.ataquesespeciais.TipoDoAtaque;
 
 public class Assassino extends Personagem{
-	private Ataques attSp = new Ataques("Finaliza√ß√£o", TipoDoAtaque.valueOf("AD"));
-	private Ataques attBasics = new Ataques("Auto-Ataque", TipoDoAtaque.valueOf("AD"));
+	private Ataques attSp = new Ataques("EXECU«√O PERFEITA", TipoDoAtaque.valueOf("AD"));
+	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AD"));
 	public List <Integer> attEspecial = new ArrayList<>();
 	public Assassino(String nomeChar) {
 		super(nomeChar);
-		pontosDeVida = 150;
+		pontosDeVida = 160;
 		poderDeHabilidade = 0;
-		poderAtaqueFisico = 40;
-		armadura = 20;
-		resistenciaMagica = 15;
+		poderAtaqueFisico = 45;
+		armadura = 30;
+		resistenciaMagica = 30;
 		ataqueEspecial = attSp;
 		ataqueBasico = attBasics;
                 pontosHabilidade = 0;
@@ -44,7 +44,7 @@ public class Assassino extends Personagem{
                 //attEspecial.add(resistenciaMagicaEspecial);
                 attEspecial.add(poderDeHabilidadeEspecial);
             } else {
-                 System.out.println("Sua habilidade especial ainda n√£o est√° pronta.\n");
+                 System.out.println("Sua habilidade especial ainda n„o est· pronta.\n");
             }
 	}
         
@@ -64,8 +64,8 @@ public class Assassino extends Personagem{
 	
 	@Override
 	public void mostrarDados() {
-		System.out.println(nomeChar +" - " + "Lutador" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque F√≠sico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResist√™ncia M√°gica: " + resistenciaMagica + 
+		System.out.println(nomeChar +" - " + "Assassino" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
+				+ "\nPoder do Ataque FÌsico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistÍncia M·gica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
 }
