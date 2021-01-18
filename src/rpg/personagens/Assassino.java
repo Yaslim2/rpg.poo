@@ -23,7 +23,7 @@ public class Assassino extends Personagem{
 	}
 	
         @Override
-	public void ataqueEspecial() {
+	public void ataqueEspecial(Personagem atacado, int verif) {
             
             if(pontosHabilidade == 1){
                 pontosHabilidade = 0;
@@ -31,22 +31,35 @@ public class Assassino extends Personagem{
                 int aux = (int) (0.15 * poderAtaqueFisico);
                 
                 int poderAtaqueFisicoEspecial = aux + poderAtaqueFisico;
-                //int pontosDeVidaEspecial = 0;
-                //int armaduraEspecial = 0;
-                //int resistenciaMagicaEspecial = 0;
                 int poderDeHabilidadeEspecial = 0;
                 
 
                 attEspecial.clear();
                 attEspecial.add(poderAtaqueFisicoEspecial);
-                //attEspecial.add(pontosDeVidaEspecial);
-                //attEspecial.add(armaduraEspecial);
-                //attEspecial.add(resistenciaMagicaEspecial);
                 attEspecial.add(poderDeHabilidadeEspecial);
+                
+                
+                
+                atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
             } else {
                  System.out.println("Sua habilidade especial ainda não está pronta.\n");
             }
 	}
+        
+        @Override
+        public void ataquePadrao(Personagem atacado, int verif){
+            atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
+        }
+        
+        @Override
+        public void aprimorarDefesa(Personagem defensor, int defesa){
+        defensor.setResistenciaMagica(defesa + 5);
+        }
+        
+        @Override
+        public void aprimorarArmadura(Personagem defensor, int defesa){
+        defensor.setArmadura(defesa + 5);
+        }
         
         @Override
         public List<Integer> getAtaqueDoAtaqueEspecial(){

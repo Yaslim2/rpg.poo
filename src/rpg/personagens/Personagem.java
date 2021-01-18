@@ -1,6 +1,7 @@
 package rpg.personagens;
 
 import java.util.List;
+import java.util.Random;
 import rpg.ataquesespeciais.Ataques;
 
 public abstract class Personagem implements Interface{
@@ -14,7 +15,9 @@ public abstract class Personagem implements Interface{
 	protected int armadura;
 	protected int resistenciaMagica;
 	protected TiposDePersonagem tipo;
-    protected int pontosHabilidade;
+        protected int pontosHabilidade;
+        
+        
 
 
 	public Personagem(String nomeChar) {
@@ -86,9 +89,22 @@ public abstract class Personagem implements Interface{
 	public void mostrarDados() {}
         
 	@Override
-	public void ataqueEspecial() {}   
+	public void ataqueEspecial(Personagem atacado, int verif) {}   
         
         @Override
         public List<Integer> getAtaqueDoAtaqueEspecial(){return null;}
+        
+        @Override
+        public void ataquePadrao(Personagem atacado, int verif){
+        }
+        
+        @Override
+        public void aprimorarDefesa(Personagem defensor, int defesa){
+            
+        }
+        @Override
+        public void aprimorarArmadura(Personagem defensor, int defesa){
+            
+        }
     
 }

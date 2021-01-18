@@ -24,7 +24,7 @@ public class Tanque extends Personagem{
 	}
 	
         @Override
-	public void ataqueEspecial() {
+	public void ataqueEspecial(Personagem atacado, int verif) {
                 if(pontosHabilidade == 1){
                     pontosHabilidade = 0;
                     int aux = (int) (0.15 * poderAtaqueFisico);
@@ -33,19 +33,15 @@ public class Tanque extends Personagem{
                     resistenciaMagica += 0.15 * resistenciaMagica;
 
                     int poderAtaqueFisicoEspecial = aux + poderAtaqueFisico;
-                    //int pontosDeVidaEspecial = aux2 * pontosDeVida + pontosDeVida;
-                    //int armaduraEspecial = aux3 * armadura + armadura;
-                    //int resistenciaMagicaEspecial = aux4 * resistenciaMagica + resistenciaMagica;
                     int poderDeHabilidadeEspecial = 0;
 
                     attEspecial.clear();
                     attEspecial.add(poderAtaqueFisicoEspecial);
-                    //attEspecial.add(pontosDeVidaEspecial);
-                    //attEspecial.add(armaduraEspecial);
-                    //attEspecial.add(resistenciaMagicaEspecial);
                     attEspecial.add(poderDeHabilidadeEspecial);
+                    
+                atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
                 } else {
-                     System.out.println("Sua habilidade especial ainda n√£o est√° pronta.\n");
+                     System.out.println("Sua habilidade especial ainda n„o est· pronta.\n");
                 }
 	}
         
@@ -69,4 +65,19 @@ public class Tanque extends Personagem{
 				+ "\nPoder do Ataque FÌsico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistÍncia M·gica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
+        
+        @Override
+        public void ataquePadrao(Personagem atacado, int verif){
+            atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
+        }
+        
+        @Override
+        public void aprimorarDefesa(Personagem defensor, int defesa){
+        defensor.setResistenciaMagica(defesa + 5);
+        }
+        
+        @Override
+        public void aprimorarArmadura(Personagem defensor, int defesa){
+        defensor.setArmadura(defesa + 5);
+        }
 }

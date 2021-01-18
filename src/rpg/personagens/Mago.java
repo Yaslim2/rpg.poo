@@ -24,7 +24,7 @@ public class Mago extends Personagem{
 	}
 	
         @Override
-	public void ataqueEspecial() {
+	public void ataqueEspecial(Personagem atacado, int verif) {
             
             
             if(pontosHabilidade == 1){
@@ -35,19 +35,14 @@ public class Mago extends Personagem{
                 
                 
                 int poderAtaqueFisicoEspecial = 0;
-                //int pontosDeVidaEspecial = aux2 * pontosDeVida + pontosDeVida;
-                //int armaduraEspecial = 0;
-		//int resistenciaMagicaEspecial = 0;
                 int poderDeHabilidadeEspecial = aux + poderDeHabilidade;
                 attEspecial.clear();
-                
                 attEspecial.add(poderAtaqueFisicoEspecial);
-                //attEspecial.add(pontosDeVidaEspecial);
-                //attEspecial.add(armaduraEspecial);
-                //attEspecial.add(resistenciaMagicaEspecial);
                 attEspecial.add(poderDeHabilidadeEspecial);
+                
+                atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
             } else {
-                 System.out.println("Sua habilidade especial ainda nÃ£o estÃ¡ pronta.\n");
+                 System.out.println("Sua habilidade especial ainda não está pronta.\n");
             }
                 
 	}
@@ -69,7 +64,22 @@ public class Mago extends Personagem{
 	@Override
 	public void mostrarDados() {
 		System.out.println(nomeChar +" - " + "Mago" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência MÃ¡gica: " + resistenciaMagica + 
+				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência Mágica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
+        
+        @Override
+        public void ataquePadrao(Personagem atacado, int verif){
+            atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
+        }
+        
+        @Override
+        public void aprimorarDefesa(Personagem defensor, int defesa){
+        defensor.setResistenciaMagica(defesa + 5);
+        }
+        
+        @Override
+        public void aprimorarArmadura(Personagem defensor, int defesa){
+        defensor.setArmadura(defesa + 5);
+        }
 }
