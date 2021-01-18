@@ -19,16 +19,16 @@ public class Batalha {
 	public void Batalhar(List<Personagem> personagens) {
         this.lutadores = (List<Personagem>) personagens;
         //LISTANDO TODOS OS GUERREIROS CARREGADOS NO VETOR LUTADORES
-        System.out.println("\nOS GUERREIROS A LUTAR SER�O:\n");
+        System.out.println("\nOS GUERREIROS A LUTAR SER�O:\n");
         for(Personagem i: lutadores){
             System.out.println(i.getNomeChar() + " -> " + i.getTipo() + "\n");
             System.out.println("Vida: " + i.getPontosDeVida());
             System.out.println("Poder de Habilidade: " +i.getPoderDeHabilidade());
             System.out.println("Poder de Ataque: " +i.getPoderAtaqueFisico());
-            System.out.println("Ataque B�sico: " +i.getAtaqueBasico());
+            System.out.println("Ataque B�sico: " +i.getAtaqueBasico());
             System.out.println("Ataque Especial: " +i.getAtaqueEspecial());
             System.out.println("Armadura: " +i.getArmadura());
-            System.out.println("Resistência M�gica: " +i.getResistenciaMagica()+ "\n----------------------\n");
+            System.out.println("Resistência M�gica: " +i.getResistenciaMagica()+ "\n----------------------\n");
             
         }
         
@@ -82,8 +82,8 @@ public class Batalha {
                     //FOR RESPONSÃ�VEL POR FAZER COM QUE CADA GUERREIRO JOGUE NO ROUND
                     for(int i = 0; i <= tamanho; i++){ // round ja iniciado
                       if(lutadores.get(i).getPontosDeVida() > 0){  
-                        System.out.println("� a vez do guerreiro " + lutadores.get(i).getNomeChar());
-                        System.out.println("O que ele far�?\n\n1 - Atacar um guerreiro.\n2 - Aprimorar Defesa.\n3 - PowerUp (Carregar habilidade especial).");
+                        System.out.println("É a vez do guerreiro " + lutadores.get(i).getNomeChar());
+                        System.out.println("O que ele fará?\n\n1 - Atacar um guerreiro.\n2 - Aprimorar Defesa.\n3 - PowerUp (Carregar habilidade especial).");
                         int atacado = entrada.nextInt();
                         while(true){
                                 if(atacado <= 3 && atacado >0){
@@ -98,7 +98,7 @@ public class Batalha {
                         switch(atacado){
                             //ATAQUE
                             case 1:
-                                System.out.println("Qual outro guerreiro este " + lutadores.get(i).getTipo() + " ir� atacar?\n");
+                                System.out.println("Qual outro guerreiro este " + lutadores.get(i).getTipo() + " irá atacar?\n");
                                 //removendo o guerreiro que irÃ¡ atacar do vetor e para listar os suscetives ao ataque
                                 List <Personagem> listaDeGuerreiros = new ArrayList<>(lutadores); 
                                 listaDeGuerreiros.remove(i);
@@ -138,7 +138,7 @@ public class Batalha {
                                     //DECLARADO NA LINHA 98
                                     Personagem sobAtaque = listaDeGuerreiros.get(attack-1);
                                         
-                                    System.out.println("Qual ataque voc� quer realizar?\n1 - Ataque Padr�o\n2 - Ataque Especial\n");
+                                    System.out.println("Qual ataque você quer realizar?\n1 - Ataque Padr�o\n2 - Ataque Especial\n");
                                     int typeOfAtt = entrada.nextInt();
                                     
                                     //VERIFICANDO SE A RESPOSTA DO USUÃ�RIO NAO FUGIU DO ESCOPO DO PROGRAMA
@@ -174,32 +174,56 @@ public class Batalha {
                                                 //ATAQUE PADRÃƒO COM DANO FÃ�SICO
                                                 case 1:
                                                     Random gerador = new Random();
-                                                    int intensidade = gerador.nextInt(2)+1;
-                                                    System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " est� atacando " + sobAtaque.getNomeChar() + " com seu ataque: " + sobAtaque.getAtaqueBasico() + "\n");
+                                                    int intensidade = gerador.nextInt(4);
+                                                    System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " está atacando " + sobAtaque.getNomeChar() + " com seu ataque: " + sobAtaque.getAtaqueBasico() + "\n");
                                                     float calculo = lutadores.get(i).getPoderAtaqueFisico() * (1 - (sobAtaque.getArmadura()/(sobAtaque.getArmadura() + 100)));
-                                                    int verif = (int) ((int) calculo + (intensidade*calculo)/10);
+                                                    int verif = (int) (calculo + (intensidade*calculo)/10);
                                                     
                                                     if(verif >= 0){
-                                                    	System.out.println(lutadores.get(i).getNomeChar() + " casou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar());
-                                                        lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                    	if(intensidade == 0) {
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Básico)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                    	} else if(intensidade == 1) {
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Moderado)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                    	} else if(intensidade == 2) {
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Intenso)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                    	} else {
+                                                    		System.out.println("\n*****CRÍTICO!********\n");
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Crítico)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                    	}
                                                     } else {
-                                                        System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque devido a sua armadura!\n");
+                                                        System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque devido a sua armadura! Nenhum dano causado!\n");
                                                     }
                                                     break;
                                                 //ATAQUE PADRÃƒO COM PODER DE HABILIDADE
                                                 case 2:
                                                     Random gerador2 = new Random();
-                                                    int intensidade2 = gerador2.nextInt(2)+1;
-                                                    System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " est� atacando " + sobAtaque.getNomeChar() + " com seu ataque: " + sobAtaque.getAtaqueBasico() +"\n");
+                                                    int intensidade2 = gerador2.nextInt(4);
+                                                    System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " est� atacando " + sobAtaque.getNomeChar() + " com seu ataque: " + sobAtaque.getAtaqueBasico() +"\n");
                                                     float calculo2 = lutadores.get(i).getPoderDeHabilidade() * (1 - (sobAtaque.getResistenciaMagica()/(sobAtaque.getResistenciaMagica()+100)));
                                                     
-                                                    int verif2 = (int) ((int) calculo2 + (intensidade2*calculo2)/10);
+                                                    int verif2 = (int) (calculo2 + (intensidade2*calculo2)/10);
                                                     
                                                     if(verif2 >= 0){
-                                                    	System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar());
-                                                        lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                    	if(intensidade2 == 0) {
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Básico)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                    	} else if(intensidade2 == 1) {
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Moderado)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                    	} else if(intensidade2 == 2) {
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Intenso)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                    	} else {
+                                                    		System.out.println("\n*****CRÍTICO!********\n");
+                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Crítico)");
+                                                            lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                    	}
                                                     } else {
-                                                        System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque devido a sua resist�ncia m�gica!" + "\n");
+                                                        System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque devido a sua resistência mágica! Nenhum dano causado!" + "\n");
                                                     }
                                                    break; 
                                             }
@@ -209,12 +233,12 @@ public class Batalha {
                                             
                                             System.out.println("\n******************************");
                                             System.out.println("\n\nExibindo dados dos guerreiros envolvidos no ataque:\n");
-                                            System.out.println("\nATACANTE:\n");
+                                            System.out.println("\nAtacante:\n");
                                             lutadores.get(i).mostrarDados();
-                                            System.out.println("\nATACADO:\n");
+                                            System.out.println("\nAtacado:\n");
                                             //VERIFICANDO SE O JOGADOR SOBATAQUE MORREU, LOGO, OBTEVE UMA VIDA NEGATIVA OU IGUAL A 0
                                             if(sobAtaque.getPontosDeVida() <= 0){
-                                                    System.out.println(sobAtaque.getNomeChar() + " N�O RESISTIU AO ATAQUE E FOI DESSA PRA MELHOR! PRESS F\n");
+                                                    System.out.println(sobAtaque.getNomeChar() + " não resistiu ao ataque e foi dessa para uma melhor! PRESS F\n");
                                                 } else {
                                                    sobAtaque.mostrarDados();
                                             }
@@ -228,35 +252,66 @@ public class Batalha {
                                             
                                             // 0 - poderAtaqueFisicoEspecial
                                             // 1 - poderDeHabilidadeEspecial
-                                                System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " IR� ATACAR " + sobAtaque.getNomeChar() + " COM SEU ATAQUE " + lutadores.get(i).getAtaqueEspecial());
+                                                System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " utilizou " + lutadores.get(i).getAtaqueEspecial() + " e irá atacar " + sobAtaque.getNomeChar() + "!");
                                                 lutadores.get(i).ataqueEspecial(sobAtaque, 0);
                                                 
                                                 //TENTARÃ� ACESSAR O VETOR RETORNADO DO ATAQUE ESPECIAL, CASO NÃƒO HAJA DADOS NO VETOR, O ATAQUE ESPECIAL
                                                 //NÃƒO ACONTECEU, LOGO, CAIRÃ� NO CATCH
                                                 try {
                                                     Random gerador = new Random();
-                                                    int intensidade = gerador.nextInt(2)+1;
+                                                    int intensidade = gerador.nextInt(4);
                                                 float calculo = lutadores.get(i).getAtaqueDoAtaqueEspecial().get(0) * (1 - (sobAtaque.getArmadura()/(sobAtaque.getArmadura() + 100)));
-                                                int verificacao = (int) ((int) calculo + (intensidade*calculo)/10);
+                                                int verificacao = (int) (calculo + (intensidade*calculo)/10);
                                                 float calculo2 = lutadores.get(i).getAtaqueDoAtaqueEspecial().get(1) * (1 - (sobAtaque.getResistenciaMagica()/(sobAtaque.getResistenciaMagica()+100)));
-                                                int verificacao2 = (int) ((int) calculo2 + (intensidade*calculo2)/10);
+                                                int verificacao2 = (int) (calculo2 + (intensidade*calculo2)/10);
                                                 
                                                 if(verificacao >= 0){
-                                                	System.out.println(lutadores.get(i).getNomeChar() + " CAUSOU " + verificacao + " DE DANO AO " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + "!!!");
-                                                        lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
+                                                	if(intensidade == 0) {
+                                                		
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Básico)");
+                                                		
+                                                	} else if(intensidade == 1) {
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Moderado)");
+                                                		
+                                                	} else if(intensidade == 2) {
+                                                		
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Intenso)");
+                                                		
+                                                	} else {
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
+                                                		System.out.println("\n*****CRÍTICO!********\n");
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Crítico)");
+                                                	}
                                                 } else {
-                                                    System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque f�sico com sua armadura!\n");
+                                                    System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque físico com sua armadura! Nenhum dano causado!\n");
                                                 }
+                                                
                                                 if(verificacao2 >= 0){  
-                                                	System.out.println(lutadores.get(i).getNomeChar() + " CAUSOU " + verificacao2 + " DE DANO AO " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + "!!!!");
-                                                        lutadores.get(i).ataqueEspecial(sobAtaque, verificacao2);
-                                                } else {
-                                                    System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque com sua resist�ncia m�gica!\n");
+                                                	if(intensidade == 0) {
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Básico)");
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao2);
+                                                	}
+                                                	else if(intensidade == 1) {
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Moderado)");
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao2);
+                                                	} else if(intensidade == 2) {
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Intenso)");
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao2);
+                                                	} else {
+                                                		System.out.println("\n*****CRÍTICO!********\n");
+                                                		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Crítico)");
+                                                		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao2);
+                                            	}
+                                               } else {
+                                                    System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque com sua resistência mágica! Nenhum dano causado!\n");
                                                 }
                                                 //AQUI INFORMAREMOS QUE O USUÃ�RIO NAO TEM PONTOS DE HABILIDADE SUFICIENTE PARA REALIZAR O ATAQUE ESPECIAL
                                                 //DANDO A OPÃ‡ÃƒO DE O MESMO ESCOLHER O TIPO DE ATAQUE PADRÃƒO.
                                                 } catch(Exception e) {
-                                                    System.out.println("Sem pontos de habilidade para realizar o Ataque Especial. Realize o ataque padr�o!\n1 - Ataque Padr�o\n");
+                                                    System.out.println("Sem pontos de habilidade para realizar o Ataque Especial. Realize o ataque padrão!\n1 - Ataque Padrão\n");
                                     
                                                         int typeOfAtt2 = entrada.nextInt();
 
@@ -288,24 +343,55 @@ public class Batalha {
                                                                 }
                                                                 switch(tipoAtaquePadrao2){
                                                                         case 1:
-                                                                            System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " est� atacando " + sobAtaque.getNomeChar() + " COM SEU ATAQUE " + sobAtaque.getAtaqueBasico());
+                                                                        	Random gerador = new Random();
+                                                                            int intensidade = gerador.nextInt(4);
+                                                                            System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " está atacando " + sobAtaque.getNomeChar() + " com seu ataque: " + sobAtaque.getAtaqueBasico());
                                                                             float calculo = lutadores.get(i).getPoderAtaqueFisico() * (1 - (sobAtaque.getArmadura()/(sobAtaque.getArmadura() + 100)));
-                                                                            int verif = (int) calculo;
+                                                                            int verif = (int) (calculo + (intensidade*calculo)/10);
                                                                             if(verif >= 0){    
-                                                                                lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                                            	if(intensidade == 0) {
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Básico)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                                            	} else if(intensidade == 1) {
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Moderado)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                                            	} else if(intensidade == 2) {
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Intenso)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                                            	} else {
+                                                                            		System.out.println("\n*****CRÍTICO!********\n");
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Crítico)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif);
+                                                                            	}
                                                                             } else {
-                                                                                System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque com sua armadura!\n");
+                                                                                System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque com sua armadura! Nenhum dano causado\n");
                                                                             }
                                                                             break;
+                                                                            
                                                                         case 2:
-                                                                            System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " est� atacando com magia o(a) " + sobAtaque.getNomeChar());
+                                                                        	Random gerador2 = new Random();
+                                                                        	int intensidade2 = gerador2.nextInt(4);
+                                                                            System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " está atacando com magia o(a) " + sobAtaque.getNomeChar());
                                                                             float calculo2 = lutadores.get(i).getPoderDeHabilidade() * (1 - (sobAtaque.getResistenciaMagica()/(sobAtaque.getResistenciaMagica()+100)));
-                                                                            int verif2 = (int) calculo2;
+                                                                            int verif2 = (int) (calculo2 + (intensidade2*calculo2)/10);
 
                                                                             if(verif2 >= 0){
-                                                                                lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                                            	if(intensidade2 == 0) {
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Básico)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                                            	} else if(intensidade2 == 1) {
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Moderado)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                                            	} else if(intensidade2 == 2) {
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Intenso)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                                            	} else {
+                                                                            		System.out.println("\n*****CRÍTICO!********\n");
+                                                                            		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verif2 + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Crítico)");
+                                                                                    lutadores.get(i).ataquePadrao(sobAtaque, verif2);
+                                                                            	}
                                                                             } else {
-                                                                                System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque com sua resist�ncia m�gica!");
+                                                                                System.out.println("\n\n" + sobAtaque.getNomeChar() + " resistiu ao ataque com sua resistência mágica! Nenhum dano causado!\n");
                                                                             }
                                                                            break; 
 
@@ -319,12 +405,12 @@ public class Batalha {
                                                 
                                                 //EXIBINDO OS DANOS E PONTOS DE HABILIDADE
                                                 System.out.println("\n******************************");
-                                                System.out.println("\n\nSTATUS DOS GUERREIROS AP�S ATAQUE ESPECIAL: ");
+                                                System.out.println("\n\nSTATUS DOS GUERREIROS AP�S ATAQUE ESPECIAL: ");
                                                 System.out.println("\nATACANTE:\n");
                                                 lutadores.get(i).mostrarDados();
                                                 System.out.println("\nATACADO:\n");
                                                 if(sobAtaque.getPontosDeVida() <= 0){
-                                                    System.out.println(sobAtaque.getNomeChar() + " N�O RESISTIU AO ATAQUE E FOI DESSA PRA MELHOR! PRESS F\n");
+                                                    System.out.println(sobAtaque.getNomeChar() + " NÃO RESISTIU AO ATAQUE E FOI DESSA PRA MELHOR! PRESS F\n");
                                                 } else {
                                                     sobAtaque.mostrarDados();
                                                 }
@@ -341,7 +427,7 @@ public class Batalha {
                                     break;
                             //APRIMORANDO DEFESA
                             case 2:
-                                System.out.println("Qual tipo de defesa deseja aprimorar?\n\n1 - Resist�ncia M�gica\n2 - Armadura\n");
+                                System.out.println("Qual tipo de defesa deseja aprimorar?\n\n1 - Resist�ncia M�gica\n2 - Armadura\n");
                                 
                                 int tipoDefesa = entrada.nextInt();
                                 while(true){
@@ -362,7 +448,7 @@ public class Batalha {
                                         break;
                                 }
                                 
-                                System.out.println(lutadores.get(i).getNomeChar() + " est� aprimorando a sua defesa para os pr�ximos rounds!\n");
+                                System.out.println(lutadores.get(i).getNomeChar() + " est� aprimorando a sua defesa para os pr�ximos rounds!\n");
                                 
                                 
                                 
@@ -379,7 +465,7 @@ public class Batalha {
                                 break;
                             //REALIZANDO POWERUP    
                             case 3:
-                                System.out.println("\n*****O guerreiro " + lutadores.get(i).getNomeChar() + " est� upando suas habilidades!*****\n");
+                                System.out.println("\n*****O guerreiro " + lutadores.get(i).getNomeChar() + " est� upando suas habilidades!*****\n");
                                 lutadores.get(i).powerUp();
                                 lutadores.get(i).mostrarDados();
                                 System.out.println("\n******************************");
@@ -433,10 +519,6 @@ public class Batalha {
             System.out.println("Pressione ENTER para continuar...");
                 new java.util.Scanner(System.in).nextLine();
         }
-    }
-
-	//public void restaurar(List p){
-      //  this.lutadores = p;
-   // }
     
-}
+    	}
+   }
