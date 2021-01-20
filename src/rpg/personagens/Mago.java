@@ -10,6 +10,7 @@ public class Mago extends Personagem{
 	private Ataques attSp = new Ataques("CONCENTRAÇÃO LUNAR", TipoDoAtaque.valueOf("AP"));
 	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AP"));
 	public List <Integer> attEspecial = new ArrayList<>();
+        private boolean auxiliar;
 	public Mago(String nomeChar) {
 		super(nomeChar);
 		pontosDeVida = 175;
@@ -27,8 +28,10 @@ public class Mago extends Personagem{
 	public void ataqueEspecial(Personagem atacado, int verif) {
             
             
-            if(pontosHabilidade == 1){
-                pontosHabilidade = 0;
+            if(pontosHabilidade >= 1){
+               
+               // atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
+                
                 int aux = (int) (0.15 * poderDeHabilidade);
                 pontosDeVida += 0.15 * pontosDeVida;
                 
@@ -39,17 +42,22 @@ public class Mago extends Personagem{
                 attEspecial.clear();
                 attEspecial.add(poderAtaqueFisicoEspecial);
                 attEspecial.add(poderDeHabilidadeEspecial);
+                auxiliar = true;
+                pontosHabilidade = 0;
                 
-                atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
             } else {
-                 System.out.println("Sua habilidade especial ainda não está pronta.\n");
+                 auxiliar = false;
             }
                 
 	}
         
         @Override
         public List<Integer> getAtaqueDoAtaqueEspecial(){
-            return attEspecial;
+            if(auxiliar){
+                 return attEspecial;
+             } else {
+                 return erro;
+             }
         }
 	
 	@Override

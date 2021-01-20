@@ -9,7 +9,7 @@ public class Tanque extends Personagem{
 	private Ataques attSp = new Ataques("DURO COMO PEDRA", TipoDoAtaque.valueOf("AD"));
 	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AD"));
 	public List <Integer> attEspecial = new ArrayList<>();
-        
+        private boolean auxiliar;
 	public Tanque(String nomeChar) {
 		super(nomeChar);
 		pontosDeVida = 325;
@@ -25,8 +25,10 @@ public class Tanque extends Personagem{
 	
         @Override
 	public void ataqueEspecial(Personagem atacado, int verif) {
-                if(pontosHabilidade == 1){
-                    pontosHabilidade = 0;
+                if(pontosHabilidade >= 1){
+                    
+                   // atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
+                    
                     int aux = (int) (0.15 * poderAtaqueFisico);
                     pontosDeVida += 0.15 * pontosDeVida;
                     armadura += 0.15 * armadura;
@@ -38,16 +40,20 @@ public class Tanque extends Personagem{
                     attEspecial.clear();
                     attEspecial.add(poderAtaqueFisicoEspecial);
                     attEspecial.add(poderDeHabilidadeEspecial);
-                    
-                atacado.setPontosDeVida(atacado.getPontosDeVida() - verif);
+                    auxiliar = true;
+                    pontosHabilidade = 0;
                 } else {
-                     System.out.println("Sua habilidade especial ainda não está pronta.\n");
+                    auxiliar = false;
                 }
 	}
         
         @Override
         public List<Integer> getAtaqueDoAtaqueEspecial(){
-            return attEspecial;
+            if(auxiliar){
+                 return attEspecial;
+             } else {
+                 return erro;
+             }
         }
 	
 	@Override
