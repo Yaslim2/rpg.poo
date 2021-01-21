@@ -8,29 +8,20 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Batalha {
-    private List <Personagem> lutadores = new ArrayList<>();
-    //private List <Personagem> backup = new ArrayList<>(lutadores);
-    
-    
-    public Batalha() {
-	}
+        
+        public Batalha() {
+            }
 
-    @SuppressWarnings("resource")
-	public void Batalhar(List<Personagem> personagens) {
-    	
-        this.lutadores = (List<Personagem>) personagens;
+        @SuppressWarnings("resource")
+	public void Batalhar(List<Personagem> guerreiros) {
+            
+    	List<Personagem> lutadores = new ArrayList<>(guerreiros); 
+        
         //LISTANDO TODOS OS GUERREIROS CARREGADOS NO VETOR LUTADORES
         System.out.println("\nOS GUERREIROS A LUTAR SERÃO:\n");
         for(Personagem i: lutadores){
-            System.out.println(i.getNomeChar() + " -> " + i.getTipo() + "\n");
-            System.out.println("Vida: " + i.getPontosDeVida());
-            System.out.println("Poder de Habilidade: " +i.getPoderDeHabilidade());
-            System.out.println("Poder de Ataque: " +i.getPoderAtaqueFisico());
-            System.out.println("Ataque Básico: " +i.getAtaqueBasico());
-            System.out.println("Ataque Especial: " +i.getAtaqueEspecial());
-            System.out.println("Armadura: " +i.getArmadura());
-            System.out.println("Resistência Mágica: " +i.getResistenciaMagica()+ "\n----------------------\n");
-            
+            i.mostrarDados();
+            System.out.println("-----------------------\n");
         }
         
         try {
@@ -440,7 +431,7 @@ public class Batalha {
                                            break;
                                    }
                                    
-                                   System.out.println(lutadores.get(i).getNomeChar() + " estï¿½ aprimorando a sua defesa para os próximos rounds!\n");
+                                   System.out.println(lutadores.get(i).getNomeChar() + " está aprimorando a sua defesa para os próximos rounds!\n");
                                    
                                    
                                    
@@ -487,8 +478,9 @@ public class Batalha {
                                }
                    }
                    
-                      // restaurar(backup);
-                   break;
+                   
+                
+                break;
                //CANCELANDO A BATALHA    
                case 2:
                	System.out.println("Saindo para o lobby...");
@@ -497,7 +489,7 @@ public class Batalha {
                	break;
                //QUALQUER COISA DIFERENTE DO INTERVALO DA PERGUNTA, O QUE RETORNA PARA O LOBBY    
                case 0:
-                   System.out.println("Comando invÃ¡lido, retornando ao lobby...");
+                   System.out.println("Comando inválido, retornando ao lobby...");
                    System.out.println("Pressione ENTER para continuar...");
                    new java.util.Scanner(System.in).nextLine();
                    break;
@@ -507,7 +499,8 @@ public class Batalha {
                System.out.println("\n\n\n\n");
                System.out.println("\n**************CAMPEÃO****************\n");
                System.out.println("O(A)" + lutadores.get(0).getNomeChar() + " FOI O GRANDE CAMPEÃO!!!!!\n");
-               System.out.println("\n******************************");
+               System.out.println("\n*************************************");
+               
                System.out.println("Pressione ENTER para continuar...");
                    new java.util.Scanner(System.in).nextLine();
            }
@@ -516,5 +509,7 @@ public class Batalha {
         	System.out.println("Pressione ENTER para continuar...");
             new java.util.Scanner(System.in).nextLine();
         }
+        
+        //Restaurando dados
    }
 }
