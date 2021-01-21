@@ -108,5 +108,6 @@ public abstract class Personagem implements Interface{
         public void aprimorarArmadura(Personagem defensor, int defesa){
             
         }
+       
     
 }

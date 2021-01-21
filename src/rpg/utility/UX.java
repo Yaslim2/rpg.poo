@@ -153,8 +153,6 @@ public class UX {
 	public void exibirPersonagens() {
 		if(personagens.isEmpty()) {
 			System.out.println("\nNenhum personagem carregado!\n");
-			System.out.println("Pressione ENTER para continuar...");
-            new java.util.Scanner(System.in).nextLine();
 		} else {
 			System.out.println("---------------------------------------");
 	    	System.out.println("---------------------------------------");
@@ -164,6 +162,9 @@ public class UX {
 	    	}
 	    	System.out.println("---------------------------------------");
 		}
+                
+                System.out.println("Pressione ENTER para continuar...");
+                new java.util.Scanner(System.in).nextLine();
 	}
 	
 	@SuppressWarnings("resource")
@@ -340,7 +341,22 @@ public class UX {
 								}
 								
 								if(entrarNaBatalha == true) {
-									battle.Batalhar(lutadores);
+									List<Personagem> bonecos = new ArrayList<>(); 
+                                                                
+                                                               for(int i = 0; i<=lutadores.size()-1; i++){
+                                                                 if(lutadores.get(i).getTipo().toString().equals("MAGO")) {
+                                                                    bonecos.add(new Mago(lutadores.get(i).getNomeChar()));
+                                                                } else if(lutadores.get(i).getTipo().toString().equals("TANQUE")) {
+                                                                    bonecos.add(new Tanque(lutadores.get(i).getNomeChar()));
+                                                                } else if(lutadores.get(i).getTipo().toString().equals("LUTADOR")) {
+                                                                    bonecos.add(new Lutador(lutadores.get(i).getNomeChar()));
+                                                                } else {
+                                                                    bonecos.add(new Assassino(lutadores.get(i).getNomeChar()));
+                                                                }
+                                                                }
+                                                                 
+                                                                battle.Batalhar(bonecos);
+                                                                
 								}
 							} else {
 								System.out.println("\nNão existem mais personagens para serem adicionados a batalha!\n");
@@ -361,7 +377,22 @@ public class UX {
 									System.out.println("\nADENTRANDO NOS CAMPOS DE BATALHA!!\n");
 									System.out.println("Pressione ENTER para continuar...");
 							        new java.util.Scanner(System.in).nextLine();
-									battle.Batalhar(lutadores);
+									List<Personagem> bonecos = new ArrayList<>(); 
+                                                                
+                                                               for(int i = 0; i<=lutadores.size()-1; i++){
+                                                                 if(lutadores.get(i).getTipo().toString().equals("MAGO")) {
+                                                                    bonecos.add(new Mago(lutadores.get(i).getNomeChar()));
+                                                                } else if(lutadores.get(i).getTipo().toString().equals("TANQUE")) {
+                                                                    bonecos.add(new Tanque(lutadores.get(i).getNomeChar()));
+                                                                } else if(lutadores.get(i).getTipo().toString().equals("LUTADOR")) {
+                                                                    bonecos.add(new Lutador(lutadores.get(i).getNomeChar()));
+                                                                } else {
+                                                                    bonecos.add(new Assassino(lutadores.get(i).getNomeChar()));
+                                                                }
+                                                                }
+                                                                 
+                                                                battle.Batalhar(bonecos);
+
 								} else {
 									entrarNaBatalha = true;
 									System.out.println("\nVocê será redirecionado ao menu principal.\n");
@@ -382,6 +413,14 @@ public class UX {
 	            new java.util.Scanner(System.in).nextLine();
 			}
 		}
+
+    public void restaurar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void editarPersonagemBatalha(Personagem k) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	}
 	
 
