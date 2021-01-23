@@ -3,7 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/emers/Documents/NetBeansProjects/Rpg/src/rpg/batalha/Batalha.java</file>
+            <file>file:/C:/Users/emers/Documents/NetBeansProjects/rpg.poo/src/rpg/batalha/Batalha.java</file>
+            <file>file:/C:/Users/emers/Documents/NetBeansProjects/rpg.poo/src/rpg/personagens/Tanque.java</file>
+            <file>file:/C:/Users/emers/Documents/NetBeansProjects/rpg.poo/src/rpg/personagens/Assassino.java</file>
+            <file>file:/C:/Users/emers/Documents/NetBeansProjects/rpg.poo/src/rpg/personagens/Personagem.java</file>
+            <file>file:/C:/Users/emers/Documents/NetBeansProjects/rpg.poo/src/rpg/personagens/Interface.java</file>
+            <file>file:/C:/Users/emers/Documents/NetBeansProjects/rpg.poo/src/rpg/personagens/Mago.java</file>
+            <file>file:/C:/Users/emers/Documents/NetBeansProjects/rpg.poo/src/rpg/personagens/Lutador.java</file>
         </group>
     </open-files>
 </project-private>
