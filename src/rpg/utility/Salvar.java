@@ -7,7 +7,7 @@ import rpg.personagens.Personagem;
 
 public class Salvar {
 	 @SuppressWarnings("resource")
-		
+		// metodo que salva o personagem com seu arquivo individual e cria o arquivo com a lista de personagens
 	    public void save(Personagem P){
 
 	        //Substituir endereço aqui
@@ -46,6 +46,7 @@ public class Salvar {
 	    }
 	 
 	 @SuppressWarnings("resource")
+	 // metodo que salva o personagem apenas com seu arquivo individual
 	public void saveEspecial(Personagem P) {
 		 String arquivo = P.getNomeChar() + ".txt";
 

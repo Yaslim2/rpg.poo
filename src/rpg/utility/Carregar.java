@@ -14,12 +14,14 @@ import rpg.personagens.TiposDePersonagem;
 
 public class Carregar {
 	@SuppressWarnings("resource")
+	
+	// método que ira retornar um personagem de acordo com seu arquivo individual
 	public Personagem load(String nomeArquivo){
         
-		//Substituir endereço aqui
         String arquivo = nomeArquivo + ".txt";
 
         try{
+        	// iremos capturar o seu nome e o seu tipo para podermos coloca-lo no programa em execução
             File arq = new File(arquivo);
             Scanner s = new Scanner(arq);
             String tipo = s.nextLine();
@@ -52,9 +54,11 @@ public class Carregar {
     }
 
     @SuppressWarnings("resource")
+    // metodo para mostrar todos os personagens que foram salvos acessando o arquivo Lista de Personagens.txt
 	public void listarPersonagens(){
     	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
+    	// verificando se a lista existe e se existe algo escrito nela
     	if(lista.exists() && lista.length() > 0) {
     		try{
     			Scanner s = new Scanner(lista);
@@ -81,12 +85,13 @@ public class Carregar {
        }
     
     @SuppressWarnings("resource")
+    // metodo que ira mostrar todos os personagens salvos e ira solicitar para o usuario escolher qual personagem ele deseja carregar
 	public Personagem selecaoPersonagem(){
-    	//Substituir endereço aqui
     	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	if(lista.exists() && lista.length() > 0) {
     		try {
+    			// StringBuilder utilizado para armazenar uma mensagem , caso o usuario digite algum valor fora do padrao
     			StringBuilder sb = new StringBuilder();
         		Scanner ler = new Scanner(System.in);
         		Personagem p = null;
@@ -103,21 +108,22 @@ public class Carregar {
     				cond += 1;
     			}
     			System.out.println("\n----------------------------------------\n");
-    			System.out.print("\nSelecione qual personagem você quer carregar com base nos números: ");
+    			System.out.print("\nSelecione qual personagem voce quer carregar com base nos numeros: ");
     			int pers = ler.nextInt();
     			while(true) {
     				if((pers-1) < 0 || (pers-1) > nomesPersonagens.size()) {
-    					System.out.println("\nValor inválido.. Digite um valor válido!");
+    					System.out.println("\nValor invalido... Digite um valor valido!");
     					System.out.println("\n----------------------------------------\n");
     					System.out.println(sb.toString());
     					System.out.println("----------------------------------------\n");
-    	    			System.out.print("\nSelecione qual personagem você quer carregar com base nos números: ");
+    	    			System.out.print("\nSelecione qual personagem voce quer carregar com base nos numeros: ");
     	    			pers = ler.nextInt();
     				} else {
     					break;
     				}
     			}
     			
+    			// capturando o personagem selecionado e carregando-o e apos isso retornando o personagem ja carregado
     			String name = nomesPersonagens.get(pers-1);
     			p = load(name);
     			return p;
@@ -136,6 +142,8 @@ public class Carregar {
 		return null;
     }
     
+    
+    // metodo utilizado para verificar se o nome ja esta sendo utilizado em relação a uma lista
     public Integer nomeRepetido(List <Personagem> personagem, Personagem k) {
     	Integer cond = 0;
     	for (Personagem p: personagem) {
@@ -147,6 +155,7 @@ public class Carregar {
     }
     
     @SuppressWarnings("resource")
+    // metodo utilizado para saber se o nome informado ja esta sendo utilizado para um personagem ja salvo
 	public Integer nomeJaCriado(String name) {
     	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
@@ -179,6 +188,7 @@ public class Carregar {
     }
     
     @SuppressWarnings("resource")
+    // metodo responsavel por retornar uma lista de string, com todos os personagens salvos de acordo com o arquivo Lista de Personagens.txt
 	public List<String> personagensSalvos(){
     	String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);

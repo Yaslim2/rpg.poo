@@ -20,6 +20,7 @@ public class UX {
     private Boolean pararPrograma = false;
     private Apagar delete = new Apagar();
     private Editar edite = new Editar();
+    private Batalha battle = new Batalha();
 	
 	public UX() {}
 
@@ -260,12 +261,9 @@ public class UX {
 		if(!personagens.isEmpty() && personagens.size() > 1) {
 			Scanner sc = new Scanner(System.in);
 			try {
-				Batalha battle = new Batalha();
-				List<Personagem> backup = new ArrayList<>();
-				for(int i = 0; i < personagens.size(); i++) {
-					backup.add(personagens.get(i));
-				}
+				List<Personagem> backup = new ArrayList<>(personagens);
 				List<Personagem> lutadores = new ArrayList<>();
+				Personagem atual = null;
 				boolean entrarNaBatalha = false;
 				int choice = -1;
 				while(entrarNaBatalha == false) {
@@ -284,7 +282,7 @@ public class UX {
 									System.out.println("\nSelecione os personagens que irão batalhar:\n");
 									cond = 1;
 									System.out.println("\n------------------------------------");
-									for(Personagem pers : personagens) {
+									for(Personagem pers : backup) {
 										System.out.println("\n" + cond + " - " + pers.getNomeChar());
 										cond += 1;
 									}
@@ -309,7 +307,8 @@ public class UX {
 								System.out.println("\nEscolha um válido!!\n");
 							} else {
 								System.out.println("\n\nPersonagem adicionado a batalha!\n\n");
-								lutadores.add(backup.get(choice-1));
+								atual = backup.get(choice-1);
+								lutadores.add(atual);
 								backup.remove(choice-1);
 							}
 							
