@@ -245,7 +245,6 @@ public class Batalha {
                                                
                                                // 0 - poderAtaqueFisicoEspecial
                                                // 1 - poderDeHabilidadeEspecial
-                                                   System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " utilizou " + lutadores.get(i).getAtaqueEspecial() + " e ira atacar " + sobAtaque.getNomeChar() + "!");
                                                    lutadores.get(i).ataqueEspecial(sobAtaque, 0);
                                                    
                                                    //TENTARA ACESSAR O VETOR RETORNADO DO ATAQUE ESPECIAL, CASO NÃƒÆ’O HAJA DADOS NO VETOR, O ATAQUE ESPECIAL
@@ -267,23 +266,27 @@ public class Batalha {
                                                    if(verificacao >= 0){
                                                    	if(intensidade == 0) {
                                                    		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
-                                                                sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " utilizou " + lutadores.get(i).getAtaqueEspecial() + " e ira atacar " + sobAtaque.getNomeChar() + "!");
                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Especial Basico)\n");
                                                    		
                                                    	} else if(intensidade == 1) {
                                                    		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
-                                                                sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " utilizou " + lutadores.get(i).getAtaqueEspecial() + " e ira atacar " + sobAtaque.getNomeChar() + "!");
                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Especial Moderado)\n");
                                                    		
                                                    	} else if(intensidade == 2) {
                                                    		
                                                    		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
-                                                                sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " utilizou " + lutadores.get(i).getAtaqueEspecial() + " e ira atacar " + sobAtaque.getNomeChar() + "!");
                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Especial Intenso)\n");
                                                    		
                                                    	} else {
                                                    		lutadores.get(i).ataqueEspecial(sobAtaque, verificacao);
-                                                                sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        sobAtaque.setPontosDeVida(sobAtaque.getPontosDeVida() - verificacao);
+                                                        System.out.println("\n\n" + lutadores.get(i).getNomeChar() + " utilizou " + lutadores.get(i).getAtaqueEspecial() + " e ira atacar " + sobAtaque.getNomeChar() + "!");
                                                    		System.out.println("\n*****CRITICO!********\n");
                                                    		System.out.println(lutadores.get(i).getNomeChar() + " causou " + verificacao + " de dano ao " + sobAtaque.getTipo() + " " + sobAtaque.getNomeChar() + " (Ataque Especial Critico)\n");
                                                    	}
@@ -294,7 +297,7 @@ public class Batalha {
                                                    //AQUI INFORMAREMOS QUE O USUARIO NAO TEM PONTOS DE HABILIDADE SUFICIENTE PARA REALIZAR O ATAQUE ESPECIAL
                                                    //DANDO A OPCAO DE O MESMO ESCOLHER O TIPO DE ATAQUE PADRAO.
                                                    } catch(Exception e) {
-                                                       System.out.println("Sem pontos de habilidade para realizar o Ataque Especial. Realize o ataque padrao!\n1 - Ataque Padrao\n");
+                                                       System.out.println("\nSem pontos de habilidade para realizar o Ataque Especial. Realize o ataque padrao!\n1 - Ataque Padrao\n");
                                        
                                                            int typeOfAtt2 = entrada.nextInt();
 
