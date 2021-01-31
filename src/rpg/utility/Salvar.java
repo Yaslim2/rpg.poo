@@ -10,7 +10,7 @@ public class Salvar {
 		// metodo que salva o personagem com seu arquivo individual e cria o arquivo com a lista de personagens
 	    public void save(Personagem P){
 
-	        //Substituir endereço aqui
+	        
 	    	String arquivo = P.getNomeChar() + ".txt";
 
 	    	try{
@@ -18,7 +18,7 @@ public class Salvar {
 
 	    		if(arq.createNewFile()){
 
-	    			//Substituir endereço aqui
+	    			
 	    			String listaPersonagens = "Lista de Personagens.txt";
 
 	    			File lista = new File(listaPersonagens);

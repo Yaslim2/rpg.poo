@@ -17,12 +17,12 @@ public interface Interface {
 	public int getResistenciaMagica();
 	public void mostrarDados();
 	public void ataqueEspecial(Personagem atacado, int verif);
-        public void setResistenciaMagica(int resistenciaMagica);
-        public void setArmadura(int armadura);
-        public void setPontosDeVida(int pontosDeVida);
-        public List<Integer> getAtaqueDoAtaqueEspecial();
-        public void ataquePadrao(Personagem atacado, int verif);
-        public void aprimorarDefesa(Personagem defensor, int defesa);
-        public void aprimorarArmadura(Personagem defensor, int defesa);
+    public void setResistenciaMagica(int resistenciaMagica);
+    public void setArmadura(int armadura);
+    public void setPontosDeVida(int pontosDeVida);
+    public List<Integer> getAtaqueDoAtaqueEspecial();
+    public void ataquePadrao(Personagem atacado, int verif);
+    public void aprimorarDefesa(Personagem defensor, int defesa);
+    public void aprimorarArmadura(Personagem defensor, int defesa);
     public void powerUp();
 }

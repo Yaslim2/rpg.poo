@@ -68,7 +68,7 @@ public class Tanque extends Personagem{
 	@Override
 	public void mostrarDados() {
 		System.out.println(nomeChar +" - " + "Tanque" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência Mágica: " + resistenciaMagica + 
+				+ "\nPoder do Ataque Fisico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistencia Magica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
         

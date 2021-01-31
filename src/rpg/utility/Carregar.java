@@ -15,13 +15,13 @@ import rpg.personagens.TiposDePersonagem;
 public class Carregar {
 	@SuppressWarnings("resource")
 	
-	// método que ira retornar um personagem de acordo com seu arquivo individual
+	// metodo que ira retornar um personagem de acordo com seu arquivo individual
 	public Personagem load(String nomeArquivo){
         
         String arquivo = nomeArquivo + ".txt";
 
         try{
-        	// iremos capturar o seu nome e o seu tipo para podermos coloca-lo no programa em execução
+        	// iremos capturar o seu nome e o seu tipo para podermos coloca-lo no programa em execucao
             File arq = new File(arquivo);
             Scanner s = new Scanner(arq);
             String tipo = s.nextLine();

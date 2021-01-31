@@ -7,7 +7,7 @@ import rpg.ataquesespeciais.TipoDoAtaque;
 
 public class Mago extends Personagem{
 	
-	private Ataques attSp = new Ataques("CONCENTRAÇÃO LUNAR", TipoDoAtaque.valueOf("AP"));
+	private Ataques attSp = new Ataques("CONCENTRAÇAO LUNAR", TipoDoAtaque.valueOf("AP"));
 	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AP"));
 	public List <Integer> attEspecial = new ArrayList<>();
         private boolean auxiliar;
@@ -72,7 +72,7 @@ public class Mago extends Personagem{
 	@Override
 	public void mostrarDados() {
 		System.out.println(nomeChar +" - " + "Mago" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência Mágica: " + resistenciaMagica + 
+				+ "\nPoder do Ataque Fisico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistencia Magica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
         

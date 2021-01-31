@@ -2,7 +2,6 @@ package rpg.personagens;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import rpg.ataquesespeciais.Ataques;
 
 public abstract class Personagem implements Interface{
@@ -16,11 +15,9 @@ public abstract class Personagem implements Interface{
 	protected int armadura;
 	protected int resistenciaMagica;
 	protected TiposDePersonagem tipo;
-        protected int pontosHabilidade;
-        protected List <Integer> erro = new ArrayList<>();
+    protected int pontosHabilidade;
+    protected List <Integer> erro = new ArrayList<>();
         
-        
-
 
 	public Personagem(String nomeChar) {
 		this.nomeChar = nomeChar;

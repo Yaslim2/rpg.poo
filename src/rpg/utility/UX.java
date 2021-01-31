@@ -53,7 +53,7 @@ public class UX {
 		String nome;
     	int condition;
     	int condition2;
-        System.out.println("\nQual personagem você deseja criar:\n\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino\n");
+        System.out.println("\nQual personagem voce deseja criar:\n\n1 - Mago\n2 - Tanque\n3 - Lutador\n4 - Assassino\n");
         try {
         	int operation = s.nextInt();
         	switch(operation) {
@@ -64,7 +64,7 @@ public class UX {
         		condition = load.nomeJaCriado(nome);
         		condition2 = checaLista(nome);
         		if(condition == 1 || condition2 == 1) {
-        			System.out.println("Nome já utilizado!\n");
+        			System.out.println("Nome ja utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
             		new java.util.Scanner(System.in).nextLine();
             		break;
@@ -82,7 +82,7 @@ public class UX {
         		condition = load.nomeJaCriado(nome);
         		condition2 = checaLista(nome);
         		if(condition == 1 || condition2 == 1) {
-        			System.out.println("\n\nNome já utilizado!\n");
+        			System.out.println("\n\nNome ja utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
             		new java.util.Scanner(System.in).nextLine();
             		break;
@@ -100,7 +100,7 @@ public class UX {
         		condition = load.nomeJaCriado(nome);
         		condition2 = checaLista(nome);
         		if(condition == 1 || condition2 == 1) {
-        			System.out.println("Nome já utilizado!\n");
+        			System.out.println("Nome ja utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
             		new java.util.Scanner(System.in).nextLine();
             		break;
@@ -118,7 +118,7 @@ public class UX {
         		condition = load.nomeJaCriado(nome);
         		condition2 = checaLista(nome);
         		if(condition == 1 || condition2 == 1) {
-        			System.out.println("Nome já utilizado!\n");
+        			System.out.println("Nome ja utilizado!\n");
             		System.out.println("Pressione ENTER para continuar...");
             		new java.util.Scanner(System.in).nextLine();
             		break;
@@ -136,7 +136,7 @@ public class UX {
                 break;
         }
       }  catch(InputMismatchException e) {
-    	  System.out.println("\nErro ao criar personagem!! Digite um caractere válido.\n");
+    	  System.out.println("\nErro ao criar personagem!! Digite um caractere valido.\n");
     	  System.out.println("Pressione ENTER para continuar...");
     	  new java.util.Scanner(System.in).nextLine();
     	  s.nextLine();
@@ -191,7 +191,7 @@ public class UX {
         if(aux != null) {
         	Integer cond = load.nomeRepetido(personagens, aux);
             if(cond == 1) {
-            	System.out.println("\nPERSONAGEM JÁ CARREGADO!!!!\n");
+            	System.out.println("\nPERSONAGEM JA CARREGADO!!!!\n");
             	System.out.println("Pressione ENTER para continuar...");
             	new java.util.Scanner(System.in).nextLine();
             } else if(cond == 0){
@@ -268,7 +268,7 @@ public class UX {
 				boolean entrarNaBatalha = false;
 				int choice = -1;
 				while(entrarNaBatalha == false) {
-						System.out.println("\nSelecione os personagens que irão batalhar:\n");
+						System.out.println("\nSelecione os personagens que irao batalhar:\n");
 							int cond = 1;
 							System.out.println("\n------------------------------------");
 							for(Personagem pers : backup) {
@@ -280,7 +280,7 @@ public class UX {
 							while(true) {
 								if(((choice - 1) < 0) || ((choice-1) > backup.size())) {
 									System.out.print("\nDigite um valor dentro do intervalo!!\n");
-									System.out.println("\nSelecione os personagens que irão batalhar:\n");
+									System.out.println("\nSelecione os personagens que irao batalhar:\n");
 									cond = 1;
 									System.out.println("\n------------------------------------");
 									for(Personagem pers : backup) {
@@ -304,7 +304,7 @@ public class UX {
 								}
 							}
 							if(auxx == 1) {
-								System.out.println("\nPersonagem já carregado no jogo!!\n");
+								System.out.println("\nPersonagem ja carregado no jogo!!\n");
 								System.out.println("\nEscolha um válido!!\n");
 							} else {
 								System.out.println("\n\nPersonagem adicionado a batalha!\n\n");
@@ -314,14 +314,14 @@ public class UX {
 							}
 							
 							if(!backup.isEmpty()) {
-								System.out.println("\nDeseja adicionar mais algum personagem à batalha? (1 - Sim) (2 - Não)\n");
+								System.out.println("\nDeseja adicionar mais algum personagem a batalha? (1 - Sim) (2 - Não)\n");
 								int decision = sc.nextInt();
 								
 								while(true) {
 									if(decision == 1 || decision == 2) {
 										break;
 									} else {
-										System.out.println("\nValor inválido. Digite um valor dentro do intervalo!\n");
+										System.out.println("\nValor invalido. Digite um valor dentro do intervalo!\n");
 										System.out.println("\nDeseja adicionar mais algum personagem à batalha? (1 - Sim) (2 - Não)\n");
 										decision = sc.nextInt();
 									}
@@ -358,14 +358,14 @@ public class UX {
                                                                 
 								}
 							} else {
-								System.out.println("\nNão existem mais personagens para serem adicionados a batalha!\n");
+								System.out.println("\nNao existem mais personagens para serem adicionados a batalha!\n");
 								System.out.println("\nDeseja iniciar a batalha? (1 - Sim) (2 - Não)\n");
 								int lek = sc.nextInt();
 								while(true) {
 									if(lek == 1 || lek == 2) {
 										break;
 									} else {
-										System.out.println("\nDigite um valor válido!\n");
+										System.out.println("\nDigite um valor valido!\n");
 										System.out.println("\nNão existem mais personagens para serem adicionados a batalha!\n");
 										System.out.println("\nDeseja iniciar a batalha? (1 - Sim) (2 - Não)\n");
 										lek = sc.nextInt();
@@ -394,7 +394,7 @@ public class UX {
 
 								} else {
 									entrarNaBatalha = true;
-									System.out.println("\nVocê será redirecionado ao menu principal.\n");
+									System.out.println("\nVoce sera redirecionado ao menu principal.\n");
 									System.out.println("Pressione ENTER para continuar...");
 							        new java.util.Scanner(System.in).nextLine();
 								}
@@ -412,14 +412,6 @@ public class UX {
 	            new java.util.Scanner(System.in).nextLine();
 			}
 		}
-
-    public void restaurar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void editarPersonagemBatalha(Personagem k) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 	}
 	
 

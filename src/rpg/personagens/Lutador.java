@@ -6,7 +6,7 @@ import rpg.ataquesespeciais.Ataques;
 import rpg.ataquesespeciais.TipoDoAtaque;
 
 public class Lutador extends Personagem{
-	private Ataques attSp = new Ataques("FÚRIA", TipoDoAtaque.valueOf("AD"));
+	private Ataques attSp = new Ataques("FURIA", TipoDoAtaque.valueOf("AD"));
 	private Ataques attBasics = new Ataques("AUTO-ATAQUE", TipoDoAtaque.valueOf("AD"));
 	public List <Integer> attEspecial = new ArrayList<>();
         private boolean auxiliar;
@@ -72,7 +72,7 @@ public class Lutador extends Personagem{
 	@Override
 	public void mostrarDados() {
 		System.out.println(nomeChar +" - " + "Lutador" + "\nPontos de Vida: " + pontosDeVida + "\nPoder de Habilidade: " + poderDeHabilidade 
-				+ "\nPoder do Ataque Físico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistência Mágica: " + resistenciaMagica + 
+				+ "\nPoder do Ataque Fisico: " + poderAtaqueFisico + "\nArmadura: " + armadura + "\nResistencia Magica: " + resistenciaMagica + 
 				"\nAtaque Especial: " + ataqueEspecial + "\nPontos de habilidade: " + pontosHabilidade);
 	}
         

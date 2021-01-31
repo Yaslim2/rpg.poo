@@ -7,23 +7,23 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Apagar {
-	// instanciando um atributo do tipo Carregar para utilizar durante o método de apagar o arquivo.
+	// instanciando um atributo do tipo Carregar para utilizar durante o metodo de apagar o arquivo.
 	private Carregar load = new Carregar();
 	
 	@SuppressWarnings("resource")
-	// será passado como método o nome de um personagem e esse será excluído, tanto seu arquivo com seus atributos, tanto quanto seu nome na lista de personagens.
+	// será passado como metodo o nome de um personagem e esse será excluido, tanto seu arquivo com seus atributos, tanto quanto seu nome na lista de personagens.
 	public void apagarArquivo(String nome) {
 		String arquivo = nome + ".txt";
 		File arq = new File(arquivo);
 		String listaPersonagens = "Lista de Personagens.txt";
 		File lista = new File(listaPersonagens);
-		// verificando a existência de personagens salvos para realizar a ação
+		// verificando a existencia de personagens salvos para realizar a açao
 		if(load.personagensSalvos() != null) {
-			// verificando a existência do arquivo com o nome do personagem, e verificando se existe algo na lista de personagens
+			// verificando a existencia do arquivo com o nome do personagem, e verificando se existe algo na lista de personagens
 			if(arq.exists() && lista.length() > 0) {
 				int pos = 0;
 				try {
-						// instanciando uma lista para os personagens salvos, e após isso atribuindo a variavel pos, a posiçao do nome que será retirado
+						// instanciando uma lista para os personagens salvos, e apos isso atribuindo a variavel pos, a posiçao do nome que sera retirado
 						List<String> personagens = load.personagensSalvos();
 						for(int i = 0; i<personagens.size(); i++) {
 							if(personagens.get(i).equals(nome)) {
@@ -70,15 +70,15 @@ public class Apagar {
 		
 	
 	@SuppressWarnings("resource")
-	// Iremos acessar o arquivo já criado "Lista de Personagens.txt" e iremos listar todos os nomes, para que o usuário possa escolher qual personagem será apagado
+	// Iremos acessar o arquivo ja criado "Lista de Personagens.txt" e iremos listar todos os nomes, para que o usuário possa escolher qual personagem sera apagado
 	public String pegarNome() {
 		String listaPersonagens = "Lista de Personagens.txt";
     	File lista = new File(listaPersonagens);
     	int pers;
-    	// Verificando se a lista existe, e se existir se ela contém algo escrito nela, que seria o nome de algum personagem.
+    	// Verificando se a lista existe, e se existir se ela contem algo escrito nela, que seria o nome de algum personagem.
     	if(lista.exists() && lista.length() > 0) {
     		try {
-    			// utilizando stringbuilder para reexibir os dados na tela, caso o usuário digite algum número inesperado.
+    			// utilizando stringbuilder para reexibir os dados na tela, caso o usuario digite algum número inesperado.
     			StringBuilder sb = new StringBuilder();
         		Scanner ler = new Scanner(System.in);
         		List <String> nomesPersonagens = new ArrayList<>();

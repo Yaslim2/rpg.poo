@@ -84,7 +84,7 @@ public class Editar {
 			// verificando a existencia do arquivo Lista de Personagens e se existe algo escrito nele
 			
 			if(lista.exists() && lista.length() > 0) {
-				// verificando se o personagem não retornou nenhum valor nulo, por conta da funçao anterior
+				// verificando se o personagem nao retornou nenhum valor nulo, por conta da funcao anterior
 				
 				if(P!=null) {
 					try {
